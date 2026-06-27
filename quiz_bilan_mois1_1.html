@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Bilan Mois 1 — Quiz</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#0A0E17;
+  background-image:
+    linear-gradient(rgba(125,170,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125,170,255,0.045) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#F4F6FA;
+  padding: 40px 20px 80px;
+  min-height: 100vh;
+}
+.page-header {
+  display:flex; justify-content:space-between; align-items:center;
+  max-width:760px; margin:0 auto 30px;
+}
+.page-title { font-size:26px; font-weight:800; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#fff; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#5B9BFF,#7B6CF0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#7DB8FF; font-weight:600; }
+.badge {
+  display:inline-block; border:1px solid rgba(125,184,255,0.35); background:rgba(125,184,255,0.06);
+  color:#7DB8FF; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  padding:5px 12px; border-radius:14px; margin-bottom:10px;
+}
+.card {
+  max-width:760px; margin:0 auto 22px;
+  border:1px solid rgba(125,170,255,0.18);
+  background:rgba(255,255,255,0.015);
+  border-radius:18px;
+  padding:30px 34px;
+}
+.intro-box {
+  max-width:760px; margin:0 auto 26px;
+  border:1px solid rgba(125,170,255,0.18);
+  background:rgba(125,170,255,0.04);
+  border-radius:14px; padding:20px 26px;
+  color:#9AA4B5; font-size:14px; line-height:1.6;
+}
+.intro-box b { color:#F4F6FA; }
+label.field-label { display:block; font-size:13px; color:#7DB8FF; font-weight:700; margin-bottom:8px; letter-spacing:0.5px; }
+input.field-input {
+  width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(125,170,255,0.25);
+  border-radius:10px; padding:12px 14px; color:#F4F6FA; font-size:15px; margin-bottom:20px;
+}
+.section-kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.q-text { font-size:18px; font-weight:800; margin-bottom:18px; line-height:1.4; }
+.options { display:flex; flex-direction:column; gap:10px; }
+.opt {
+  border:1px solid rgba(125,170,255,0.2); background:rgba(255,255,255,0.02);
+  border-radius:10px; padding:13px 18px; cursor:pointer; font-size:15px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.opt:hover { background:rgba(125,170,255,0.08); }
+.opt.selected { border-color:#5B9BFF; background:rgba(91,155,255,0.12); color:#fff; font-weight:600; }
+.progress-bar-wrap { max-width:760px; margin:0 auto 24px; height:6px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#5B9BFF,#8FC4FF); width:0%; transition:width 0.3s; }
+.btn-row { max-width:760px; margin:0 auto; display:flex; justify-content:flex-end; gap:12px; }
+.btn {
+  border:2px solid #5B9BFF; background:rgba(91,155,255,0.08); color:#7DB8FF;
+  font-size:14px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+  padding:12px 26px; border-radius:10px; cursor:pointer;
+}
+.btn:hover { background:rgba(91,155,255,0.18); }
+.btn:disabled { opacity:0.35; cursor:not-allowed; }
+.btn.primary { background:#5B9BFF; color:#0A0E17; }
+.btn.primary:hover { background:#7DB8FF; }
+.hidden { display:none !important; }
+.result-score { text-align:center; }
+.result-score .num { font-size:64px; font-weight:800; color:#34D399; }
+.result-score .label { color:#9AA4B5; font-size:15px; margin-top:6px; }
+.section-recap { font-size:14px; color:#9AA4B5; margin-top:6px; }
+.section-recap b { color:#F4F6FA; }
+iframe.tally-frame { width:100%; height:600px; border:none; border-radius:14px; margin-top:10px; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div>
+      <div class="page-title">Bilan Mois 1</div>
+      <div style="color:#7DB8FF;font-size:13px;font-weight:600;margin-top:4px;">RÉVISION SEMAINES 1 À 4</div>
+    </div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+
+  <!-- ÉTAPE 0 : IDENTITÉ -->
+  <div id="step-intro">
+    <div class="intro-box">
+      Vous voilà au bout de votre premier mois de darija marocain ! Ce quiz reprend l'ensemble de ce que vous avez appris : salutations, présentations, famille, chiffres, jours, heure, couleurs, verbes et négation. <b>16 questions</b>, répondez sans regarder vos notes.
+    </div>
+    <div class="card">
+      <label class="field-label">Prénom</label>
+      <input class="field-input" id="input-prenom" type="text" placeholder="Votre prénom">
+      <label class="field-label">Email</label>
+      <input class="field-input" id="input-email" type="email" placeholder="votre@email.com">
+      <div class="btn-row" style="justify-content:flex-start;">
+        <button class="btn primary" onclick="startQuiz()">Commencer le quiz</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 : QUIZ -->
+  <div id="step-quiz" class="hidden">
+    <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+    <div class="card" id="question-card"></div>
+    <div class="btn-row">
+      <button class="btn" id="btn-prev" onclick="prevQuestion()">Précédent</button>
+      <button class="btn primary" id="btn-next" onclick="nextQuestion()" disabled>Suivant</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 2 : RÉSULTATS -->
+  <div id="step-result" class="hidden">
+    <div class="card result-score">
+      <div class="num" id="result-num">0/16</div>
+      <div class="label" id="result-label">Calcul en cours...</div>
+    </div>
+    <div class="card">
+      <div class="section-kicker">DÉTAIL PAR SECTION</div>
+      <div id="section-recap"></div>
+    </div>
+    <div class="card">
+      <div class="section-kicker">ENVOYER MES RÉSULTATS</div>
+      <p style="color:#9AA4B5;font-size:14px;margin-bottom:14px;">Vos réponses ont été préremplies ci-dessous. Cliquez sur "Envoyer" dans le formulaire pour que votre professeur reçoive vos résultats par email.</p>
+      <iframe class="tally-frame" id="tally-iframe" src=""></iframe>
+    </div>
+  </div>
+
+<script>
+const QUESTIONS = [
+  {section:"Salutations", q:"Comment dit-on « Bonjour » en darija ?", opts:["mrhba","bslama","la bès"], correct:0},
+  {section:"Salutations", q:"Que répond-on à « la bès ? » ?", opts:["smi Karim","la bès, lhamdullah","fin"], correct:1},
+  {section:"Se présenter & Pronoms", q:"Comment dit-on « Je m'appelle... » ?", opts:["mnin nta","smi...","shhal 3mrek"], correct:1},
+  {section:"Se présenter & Pronoms", q:"Quel pronom correspond à « Nous » ?", opts:["hna","ntuma","huma"], correct:0},
+  {section:"Famille & Adjectifs", q:"Comment dit-on « mon frère » ?", opts:["khti","khoya","wouldi"], correct:1},
+  {section:"Famille & Adjectifs", q:"« kbir » au féminin donne :", opts:["kbira","kbir","kbiro"], correct:0},
+  {section:"Famille & Adjectifs", q:"Comment dit-on « content » (au masculin) ?", opts:["farhana","mzyan","farhan"], correct:2},
+  {section:"Genre/accord & Questions", q:"« chkoun ? » veut dire :", opts:["Où ?","Qui ?","Comment ?"], correct:1},
+  {section:"Genre/accord & Questions", q:"« fin ? » veut dire :", opts:["Qui ?","Comment ?","Où ?"], correct:2},
+  {section:"Chiffres & Jours/Mois", q:"Comment dit-on « 25 » ?", opts:["khamsa w 3achrin","3achrin w khamsa","khamsin"], correct:0},
+  {section:"Chiffres & Jours/Mois", q:"Quel jour vient après « ttlat » (mardi) ?", opts:["ltnin","larb3","lkhmis"], correct:1},
+  {section:"Chiffres & Jours/Mois", q:"Quel chiffre se prononce « ts3a » (et non « ts3oud ») ?", opts:["7","8","9"], correct:2},
+  {section:"Heure & Couleurs", q:"Comment dit-on « il est 3 heures » ?", opts:["Ssa3a tlata","Ttlat ssa3a","Tlata fssa3a"], correct:0},
+  {section:"Heure & Couleurs", q:"Le mot pour « bleu » en darija marocain est :", opts:["kahel","zreq","khal"], correct:1},
+  {section:"Verbes & Négation", q:"Comment dit-on « manger » ?", opts:["chreb","kla","dar"], correct:1},
+  {section:"Verbes & Négation", q:"Quelle structure exprime la négation en darija ?", opts:["wash...ch","ma...ch","ka...ch"], correct:1},
+];
+
+let current = 0;
+let answers = new Array(QUESTIONS.length).fill(null);
+let prenom = "", email = "";
+
+function startQuiz(){
+  prenom = document.getElementById('input-prenom').value.trim();
+  email = document.getElementById('input-email').value.trim();
+  if(!prenom || !email){ alert("Merci de renseigner votre prénom et votre email avant de commencer."); return; }
+  document.getElementById('step-intro').classList.add('hidden');
+  document.getElementById('step-quiz').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  const card = document.getElementById('question-card');
+  card.innerHTML = `
+    <div class="section-kicker">${q.section.toUpperCase()} — QUESTION ${current+1}/${QUESTIONS.length}</div>
+    <div class="q-text">${q.q}</div>
+    <div class="options">
+      ${q.opts.map((o,i)=>`<div class="opt ${answers[current]===i?'selected':''}" onclick="selectOption(${i})">${o}</div>`).join('')}
+    </div>
+  `;
+  document.getElementById('progress-bar').style.width = ((current)/QUESTIONS.length*100)+"%";
+  document.getElementById('btn-prev').disabled = current===0;
+  document.getElementById('btn-next').disabled = answers[current]===null;
+  document.getElementById('btn-next').textContent = current===QUESTIONS.length-1 ? "Voir mes résultats" : "Suivant";
+}
+
+function selectOption(i){
+  answers[current] = i;
+  renderQuestion();
+}
+
+function prevQuestion(){
+  if(current>0){ current--; renderQuestion(); }
+}
+
+function nextQuestion(){
+  if(answers[current]===null) return;
+  if(current < QUESTIONS.length-1){
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function showResults(){
+  document.getElementById('step-quiz').classList.add('hidden');
+  document.getElementById('step-result').classList.remove('hidden');
+
+  let score = 0;
+  const sectionStats = {};
+  QUESTIONS.forEach((q,i)=>{
+    if(!sectionStats[q.section]) sectionStats[q.section] = {correct:0, total:0};
+    sectionStats[q.section].total++;
+    if(answers[i]===q.correct){ score++; sectionStats[q.section].correct++; }
+  });
+  const total = QUESTIONS.length;
+  const pct = Math.round(score/total*100);
+  let resultat = "À revoir";
+  if(pct>=85) resultat = "Excellent";
+  else if(pct>=65) resultat = "Bien";
+  else if(pct>=45) resultat = "Moyen";
+
+  document.getElementById('result-num').textContent = score+"/"+total;
+  document.getElementById('result-label').textContent = pct+"% — "+resultat;
+
+  let recapHtml = "";
+  const sectionsDetailsParts = [];
+  for(const [sec, stat] of Object.entries(sectionStats)){
+    recapHtml += `<div class="section-recap"><b>${sec}</b> : ${stat.correct}/${stat.total}</div>`;
+    sectionsDetailsParts.push(`${sec}: ${stat.correct}/${stat.total}`);
+  }
+  document.getElementById('section-recap').innerHTML = recapHtml;
+  const sectionsDetails = sectionsDetailsParts.join(" | ");
+
+  const dateQuiz = new Date().toLocaleDateString('fr-FR');
+
+  const params = new URLSearchParams({
+    prenom: prenom,
+    email: email,
+    score: score,
+    sur: total,
+    pourcentage: pct + "%",
+    resultat: resultat,
+    sections_details: sectionsDetails,
+    date_quiz: dateQuiz
+  });
+
+  document.getElementById('tally-iframe').src = "https://tally.so/r/RGg0dK?" + params.toString();
+}
+</script>
+</body></html>
