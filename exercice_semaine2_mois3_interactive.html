@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Donner son avis — Exercices</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#0A0E17;
+  background-image:
+    linear-gradient(rgba(125,170,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125,170,255,0.045) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#F4F6FA;
+  padding: 40px 20px 80px;
+}
+.page-header { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto 36px; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#fff; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#5B9BFF,#7B6CF0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#7DB8FF; font-weight:600; }
+.badge { display:inline-block; border:1px solid rgba(125,184,255,0.35); background:rgba(125,184,255,0.06); color:#7DB8FF; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
+.hero { max-width:760px; margin:30px auto 36px; }
+.hero .kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.hero h1 { font-size:42px; font-weight:800; line-height:1.15; margin-bottom:18px; }
+.hero h1 .grad { color:#5B9BFF; }
+.hero p { color:#9AA4B5; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
+.hero .note-box { border:1px solid rgba(125,170,255,0.18); background:rgba(125,170,255,0.04); border-radius:14px; padding:18px 24px; color:#9AA4B5; font-size:14px; line-height:1.6; }
+.hero .note-box b { color:#F4F6FA; }
+.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:32px 36px; }
+.exo-kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.exo-question { font-size:21px; font-weight:800; margin-bottom:22px; line-height:1.4; }
+.exo-question .hl { color:#7DB8FF; font-weight:700; }
+.exo-divider { border-top:1px solid rgba(125,170,255,0.14); margin-bottom:22px; }
+.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#34D399; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.exo-answer { border:1px solid rgba(52,211,153,0.3); background:rgba(52,211,153,0.06); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#F4F6FA; margin-bottom:14px; cursor:pointer; position:relative; }
+.exo-answer.hidden-answer { color:transparent; user-select:none; }
+.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#5C6678; font-size:13px; font-weight:500; }
+.exo-tip { font-size:13px; color:#7A8499; font-style:italic; }
+.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:40px 32px; text-align:center; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div class="badge">SEMAINE 2 · MOIS 3 · EXERCICES</div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+  <div class="hero">
+    <div class="kicker">DARIJA MAROCAIN — RÉVISION</div>
+    <h1>Donner son <span class="grad">avis</span></h1>
+    <p>Place à la pratique. Ces exercices reprennent les expressions pour donner son avis, être d'accord ou non, et nuancer une discussion.</p>
+    <div class="note-box"><b>7 exercices</b> à faire à voix haute, comme dans une vraie discussion. Essayez de répondre <b>avant</b> de regarder la correction.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">AVIS</div>
+    <div class="exo-question">Comment demander à quelqu'un <span class="hl">son avis</span> sur quelque chose ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Kifah choftah ?</div>
+    <div class="exo-tip">💡 Littéralement « comment l'as-tu vu/trouvé ? ».</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">AVIS</div>
+    <div class="exo-question">Comment dire <span class="hl">« je n'aime pas ça »</span> poliment ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Ma3jibnich.</div>
+    <div class="exo-tip">💡 Forme négative pour exprimer un avis négatif sans être brutal.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">ACCORD</div>
+    <div class="exo-question">Comment exprimer son accord avec quelqu'un ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Wakha. / Safi.</div>
+    <div class="exo-tip">💡 Les deux formules confirment qu'on est d'accord.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">DÉSACCORD</div>
+    <div class="exo-question">Comment exprimer poliment un <span class="hl">désaccord</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Machi rayi.</div>
+    <div class="exo-tip">💡 « Ce n'est pas mon avis » — une façon douce de contredire.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">QUESTION</div>
+    <div class="exo-question">Traduisez : <span class="hl">« Pourquoi ? »</span></div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">3lach ?</div>
+    <div class="exo-tip">💡 Question essentielle pour creuser un sujet de débat.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">NUANCE</div>
+    <div class="exo-question">Comment dire <span class="hl">« rien du tout »</span> dans une discussion ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Walou.</div>
+    <div class="exo-tip">💡 Pour exprimer une absence totale ou un désaccord complet.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">PHRASE LIBRE</div>
+    <div class="exo-question">À voix haute, donnez votre avis sur un film ou un plat que vous avez aimé ou pas.</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Exemple : « Ana nchuf, ih, 3jbni bzaf ! » ou « Machi rayi, ma3jbnich. »</div>
+    <div class="exo-tip">💡 Improvisez avec un vrai avis personnel — c'est le meilleur entraînement.</div>
+  </div>
+
+  <div class="end-card">
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #34D399;background:rgba(52,211,153,0.08);display:flex;align-items:center;justify-content:center;font-size:24px;color:#34D399;margin:0 auto 18px;">&#10003;</div>
+    <div style="color:#34D399;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
+    <div style="width:50px;height:3px;background:#E5A44B;margin:0 auto 28px;"></div>
+    <div style="color:#E5A44B;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">كل واحد وراه</div>
+    <div style="color:#F4F6FA;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"Chacun voit les choses à sa façon."</div>
+    <div style="color:#5C6678;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
+    <div style="border:1px solid rgba(125,170,255,0.18);background:rgba(125,170,255,0.04);border-radius:14px;padding:18px 24px;color:#9AA4B5;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#F4F6FA;'>toute la Semaine 2 du Mois 3</b> : donner son avis, accord/désaccord, questions et nuances. Refaites ces 7 exercices à voix haute avant de passer à la Semaine 3.</div>
+  </div>
+</body></html>
