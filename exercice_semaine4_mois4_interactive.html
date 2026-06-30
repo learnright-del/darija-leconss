@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Le bilan final — Exercices</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#0A0E17;
+  background-image:
+    linear-gradient(rgba(125,170,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125,170,255,0.045) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#F4F6FA;
+  padding: 40px 20px 80px;
+}
+.page-header { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto 36px; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#fff; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#5B9BFF,#7B6CF0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#7DB8FF; font-weight:600; }
+.badge { display:inline-block; border:1px solid rgba(125,184,255,0.35); background:rgba(125,184,255,0.06); color:#7DB8FF; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
+.hero { max-width:760px; margin:30px auto 36px; }
+.hero .kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.hero h1 { font-size:42px; font-weight:800; line-height:1.15; margin-bottom:18px; }
+.hero h1 .grad { color:#5B9BFF; }
+.hero p { color:#9AA4B5; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
+.hero .note-box { border:1px solid rgba(125,170,255,0.18); background:rgba(125,170,255,0.04); border-radius:14px; padding:18px 24px; color:#9AA4B5; font-size:14px; line-height:1.6; }
+.hero .note-box b { color:#F4F6FA; }
+.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:32px 36px; }
+.exo-kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.exo-question { font-size:21px; font-weight:800; margin-bottom:22px; line-height:1.4; }
+.exo-question .hl { color:#7DB8FF; font-weight:700; }
+.exo-divider { border-top:1px solid rgba(125,170,255,0.14); margin-bottom:22px; }
+.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#34D399; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.exo-answer { border:1px solid rgba(52,211,153,0.3); background:rgba(52,211,153,0.06); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#F4F6FA; margin-bottom:14px; cursor:pointer; position:relative; }
+.exo-answer.hidden-answer { color:transparent; user-select:none; }
+.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#5C6678; font-size:13px; font-weight:500; }
+.exo-tip { font-size:13px; color:#7A8499; font-style:italic; }
+.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:40px 32px; text-align:center; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div class="badge">SEMAINE 4 · MOIS 4 · EXERCICES</div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+  <div class="hero">
+    <div class="kicker">DARIJA MAROCAIN — RÉVISION</div>
+    <h1>Le bilan <span class="grad">final</span></h1>
+    <p>Place à la pratique. Ces exercices reprennent le vocabulaire clé des 4 mois, les connecteurs avancés et la compréhension orale.</p>
+    <div class="note-box"><b>7 exercices</b> à faire à voix haute. C'est le dernier exercice du programme — prenez le temps de faire le bilan de votre apprentissage.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">RÉVISION</div>
+    <div class="exo-question">Quel mot, appris au Mois 1, signifie <span class="hl">« bonjour »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">mrhba</div>
+    <div class="exo-tip">💡 Le tout premier mot du programme.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">CONNECTEUR</div>
+    <div class="exo-question">Quel connecteur signifie <span class="hl">« parce que »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">7it</div>
+    <div class="exo-tip">💡 Pour exprimer une cause dans une phrase complexe.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">CONNECTEUR</div>
+    <div class="exo-question">Quel connecteur signifie <span class="hl">« finalement »</span>, pour conclure un récit ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">fin l-akhir</div>
+    <div class="exo-tip">💡 Utile pour clore une histoire ou un raisonnement.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">COMPRÉHENSION</div>
+    <div class="exo-question">Traduisez : <span class="hl">« Lbareh, mchit l-khedma w lqit bzaf dyal mochkil. »</span></div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Hier, je suis allé au travail et j'ai trouvé beaucoup de problèmes.</div>
+    <div class="exo-tip">💡 Combine le passé et le vocabulaire professionnel.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">COMPRÉHENSION</div>
+    <div class="exo-question">Traduisez : <span class="hl">« Ila 3ndek lwqt, bghit nhdar m3ak 3la chi haja mohima. »</span></div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Si tu as le temps, je veux te parler de quelque chose d'important.</div>
+    <div class="exo-tip">💡 Utilise la condition avec « ila ».</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">CONSEIL</div>
+    <div class="exo-question">Quel conseil rappelle que <span class="hl">« la patience est la clé »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Sebr howa l-miftah.</div>
+    <div class="exo-tip">💡 Un rappel essentiel pour continuer à apprendre après le programme.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">PHRASE LIBRE</div>
+    <div class="exo-question">À voix haute, résumez en 3-4 phrases ce que vous avez appris pendant ce programme de 4 mois.</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Exemple : « Zman, ma kontch n3raf darija. Daba, kanqder nhdar 3la bzaf dyal lhajat. Imala, ghadi nkmml ntabi3 ! »</div>
+    <div class="exo-tip">💡 Combinez passé, présent et futur pour un vrai bilan personnel.</div>
+  </div>
+
+  <div class="end-card">
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #34D399;background:rgba(52,211,153,0.08);display:flex;align-items:center;justify-content:center;font-size:24px;color:#34D399;margin:0 auto 18px;">&#10003;</div>
+    <div style="color:#34D399;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
+    <div style="width:50px;height:3px;background:#E5A44B;margin:0 auto 28px;"></div>
+    <div style="color:#E5A44B;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">من سار على الدرب وصل</div>
+    <div style="color:#F4F6FA;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"Qui suit le chemin, arrive à destination."</div>
+    <div style="color:#5C6678;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
+    <div style="border:1px solid rgba(125,170,255,0.18);background:rgba(125,170,255,0.04);border-radius:14px;padding:18px 24px;color:#9AA4B5;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#F4F6FA;'>tout le programme Darija Marocain</b> ! Bravo pour ce parcours de 4 mois. Continuez à pratiquer chaque jour, même un peu — c'est ainsi que la langue s'installe durablement.</div>
+  </div>
+</body></html>
