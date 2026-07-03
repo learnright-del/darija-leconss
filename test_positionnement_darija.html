@@ -56,6 +56,8 @@ input.field-input:focus { border-color:#5B9BFF; }
 .select-input { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(125,170,255,0.25); border-radius:10px; padding:12px 14px; color:#F4F6FA; font-size:15px; margin-bottom:20px; outline:none; }
 .divider { border-top:1px solid rgba(125,170,255,0.14); margin:20px 0; }
 </style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("T13h-8mdMY_7gdppx");</script>
 </head>
 <body>
   <div class="page-header">
@@ -248,19 +250,13 @@ function showResult(){
   document.getElementById('result-desc').textContent = desc;
   document.getElementById('score-num').style.color = color;
 
-  // Envoi silencieux vers Tally
-  try {
-    const params = new URLSearchParams({
-      prenom: prenom,
-      email: email,
-      score: score + "/10",
-      profil: title,
-      raison: raison,
-      contact: contact,
-      temps: temps
-    });
-    fetch("https://tally.so/r/RGlWx9?" + params.toString(), {mode:'no-cors'}).catch(()=>{});
-  } catch(e){}
+  // Envoi via EmailJS
+  emailjs.send("service_1js313k", "template_pbui5xp", {
+    name: prenom,
+    email: email,
+    message: "Score : " + score + "/10\nProfil : " + title + "\nRaison : " + raison + "\nContact avec le darija : " + contact + "\nTemps disponible : " + temps,
+    time: new Date().toLocaleString('fr-FR')
+  }).catch(()=>{});
 }
 </script>
 </body></html>
