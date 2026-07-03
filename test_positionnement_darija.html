@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Test de positionnement — Darija Marocain</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#0A0E17;
+  background-image:
+    linear-gradient(rgba(125,170,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125,170,255,0.045) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#F4F6FA;
+  padding: 40px 20px 80px;
+  min-height: 100vh;
+}
+.page-header { display:flex; justify-content:space-between; align-items:center; max-width:700px; margin:0 auto 30px; }
+.page-title { font-size:24px; font-weight:800; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#fff; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#5B9BFF,#7B6CF0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#7DB8FF; font-weight:600; }
+.card { max-width:700px; margin:0 auto 22px; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:30px 34px; }
+.intro-box { max-width:700px; margin:0 auto 26px; border:1px solid rgba(125,170,255,0.18); background:rgba(125,170,255,0.04); border-radius:14px; padding:20px 26px; color:#9AA4B5; font-size:14px; line-height:1.7; }
+.intro-box b { color:#F4F6FA; }
+label.field-label { display:block; font-size:13px; color:#7DB8FF; font-weight:700; margin-bottom:8px; }
+input.field-input { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(125,170,255,0.25); border-radius:10px; padding:12px 14px; color:#F4F6FA; font-size:15px; margin-bottom:20px; outline:none; }
+input.field-input:focus { border-color:#5B9BFF; }
+.section-kicker { color:#E5A44B; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.q-text { font-size:17px; font-weight:800; margin-bottom:16px; line-height:1.4; }
+.q-text .hl { color:#7DB8FF; }
+.options { display:flex; flex-direction:column; gap:10px; }
+.opt { border:1px solid rgba(125,170,255,0.2); background:rgba(255,255,255,0.02); border-radius:10px; padding:12px 18px; cursor:pointer; font-size:14px; transition:background 0.15s, border-color 0.15s; }
+.opt:hover { background:rgba(125,170,255,0.08); }
+.opt.selected { border-color:#5B9BFF; background:rgba(91,155,255,0.12); color:#fff; font-weight:600; }
+.progress-bar-wrap { max-width:700px; margin:0 auto 24px; }
+.progress-label { display:flex; justify-content:space-between; font-size:12px; color:#5C6678; margin-bottom:8px; }
+.progress-bar-bg { height:6px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#5B9BFF,#8FC4FF); width:0%; transition:width 0.3s; }
+.btn-row { max-width:700px; margin:0 auto; display:flex; justify-content:flex-end; gap:12px; }
+.btn { border:2px solid #5B9BFF; background:rgba(91,155,255,0.08); color:#7DB8FF; font-size:14px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; padding:12px 26px; border-radius:10px; cursor:pointer; transition:background 0.15s; }
+.btn:hover { background:rgba(91,155,255,0.18); }
+.btn.primary { background:#5B9BFF; color:#0A0E17; border-color:#5B9BFF; }
+.btn.primary:hover { background:#7DB8FF; border-color:#7DB8FF; }
+.btn:disabled { opacity:0.35; cursor:not-allowed; }
+.hidden { display:none !important; }
+.result-icon { width:70px; height:70px; border-radius:50%; margin:0 auto 20px; display:flex; align-items:center; justify-content:center; font-size:28px; }
+.result-title { font-size:28px; font-weight:800; text-align:center; margin-bottom:12px; }
+.result-subtitle { color:#7DB8FF; font-size:14px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; text-align:center; margin-bottom:24px; }
+.result-desc { color:#9AA4B5; font-size:15px; line-height:1.7; text-align:center; max-width:520px; margin:0 auto 28px; }
+.score-display { display:flex; justify-content:center; gap:30px; margin-bottom:28px; }
+.score-box { text-align:center; }
+.score-num { font-size:42px; font-weight:800; color:#34D399; }
+.score-label { font-size:12px; color:#5C6678; text-transform:uppercase; letter-spacing:1px; }
+.cta-btn { display:block; max-width:320px; margin:0 auto; background:#5B9BFF; color:#0A0E17; font-size:15px; font-weight:800; text-align:center; padding:16px 24px; border-radius:12px; text-decoration:none; letter-spacing:0.5px; transition:background 0.15s; }
+.cta-btn:hover { background:#7DB8FF; }
+.select-input { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(125,170,255,0.25); border-radius:10px; padding:12px 14px; color:#F4F6FA; font-size:15px; margin-bottom:20px; outline:none; }
+.divider { border-top:1px solid rgba(125,170,255,0.14); margin:20px 0; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div class="page-title">Test de positionnement</div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+
+  <!-- ÉTAPE 0 : INTRO + INFOS -->
+  <div id="step-intro">
+    <div class="intro-box">
+      Ce test rapide de <b>5 minutes</b> vous aide à savoir si la formation <b>Darija Marocain Learn Right</b> est faite pour vous. Il n'y a pas de bonnes ou mauvaises réponses — répondez instinctivement !
+    </div>
+    <div class="card">
+      <div class="section-kicker">VOS INFORMATIONS</div>
+      <label class="field-label">Prénom</label>
+      <input class="field-input" id="input-prenom" type="text" placeholder="Votre prénom">
+      <label class="field-label">Email</label>
+      <input class="field-input" id="input-email" type="email" placeholder="votre@email.com">
+      <div class="divider"></div>
+      <div class="section-kicker" style="margin-top:4px;">VOTRE PROFIL</div>
+      <label class="field-label">Pourquoi voulez-vous apprendre le darija marocain ?</label>
+      <select class="select-input" id="input-raison">
+        <option value="">Choisissez une réponse...</option>
+        <option>J'ai de la famille ou des proches marocains</option>
+        <option>Je pars vivre ou voyager au Maroc</option>
+        <option>Je suis d'origine marocaine et je veux retrouver ma langue</option>
+        <option>Curiosité culturelle / autre raison</option>
+      </select>
+      <label class="field-label">Avez-vous déjà eu des contacts avec le darija ?</label>
+      <select class="select-input" id="input-contact">
+        <option value="">Choisissez une réponse...</option>
+        <option>Jamais, c'est totalement nouveau pour moi</option>
+        <option>J'entends du darija autour de moi mais je ne comprends rien</option>
+        <option>Je comprends quelques mots ou expressions</option>
+        <option>Je peux suivre une conversation simple</option>
+      </select>
+      <label class="field-label">Combien de temps pouvez-vous consacrer au darija par semaine ?</label>
+      <select class="select-input" id="input-temps">
+        <option value="">Choisissez une réponse...</option>
+        <option>Moins de 30 minutes</option>
+        <option>30 minutes à 1 heure</option>
+        <option>1 à 2 heures</option>
+        <option>Plus de 2 heures</option>
+      </select>
+      <div class="btn-row" style="justify-content:flex-start; margin-top:8px;">
+        <button class="btn primary" onclick="startTest()">Commencer le test ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 : QUESTIONS -->
+  <div id="step-quiz" class="hidden">
+    <div class="progress-bar-wrap">
+      <div class="progress-label">
+        <span id="progress-text">Question 1 / 10</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar-bg"><div class="progress-bar" id="progress-bar"></div></div>
+    </div>
+    <div class="card" id="question-card"></div>
+    <div class="btn-row">
+      <button class="btn" id="btn-prev" onclick="prevQuestion()">← Précédent</button>
+      <button class="btn primary" id="btn-next" onclick="nextQuestion()" disabled>Suivant →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 2 : RÉSULTAT -->
+  <div id="step-result" class="hidden">
+    <div class="card" style="text-align:center; padding:40px 34px;">
+      <div class="result-icon" id="result-icon"></div>
+      <div class="result-subtitle" id="result-subtitle"></div>
+      <div class="result-title" id="result-title"></div>
+      <div class="score-display">
+        <div class="score-box">
+          <div class="score-num" id="score-num">0</div>
+          <div class="score-label">Score</div>
+        </div>
+        <div class="score-box">
+          <div class="score-num" style="color:#7DB8FF;">10</div>
+          <div class="score-label">Questions</div>
+        </div>
+      </div>
+      <div class="result-desc" id="result-desc"></div>
+      <a href="https://www.learnright.fr" target="_blank" class="cta-btn" id="cta-btn">Découvrir la formation →</a>
+    </div>
+  </div>
+
+<script>
+const QUESTIONS = [
+  {kicker:"VOCABULAIRE DE BASE", q:"Que signifie « mrhba » ?", opts:["Au revoir","Bonjour / Bienvenue","Merci","S'il te plaît"], correct:1},
+  {kicker:"VOCABULAIRE DE BASE", q:"Comment dit-on « mon frère » en darija ?", opts:["benti","khoya","jeddi","zawji"], correct:1},
+  {kicker:"VOCABULAIRE DE BASE", q:"Que veut dire « bghit » ?", opts:["Je comprends","Je veux","Je sais","Je pars"], correct:1},
+  {kicker:"VOCABULAIRE DE BASE", q:"« La bès ? » signifie :", opts:["Tu viens d'où ?","Comment t'appelles-tu ?","Ça va ?","Au revoir"], correct:2},
+  {kicker:"DIALECTE RÉGIONAL", q:"Quel mot signifie « maintenant » dans la région d'Oujda / Berkane ?", opts:["ghedda","lbareh","derk","zman"], correct:2},
+  {kicker:"GRAMMAIRE", q:"Comment dit-on « je vais aller » au futur en darija ?", opts:["mchit","ghadi nmchi","kanmchi","mcha"], correct:1},
+  {kicker:"VOCABULAIRE COURANT", q:"Que signifie « wakha » ?", opts:["Peut-être","Jamais","D'accord","Pourquoi"], correct:2},
+  {kicker:"VIE QUOTIDIENNE", q:"Comment dit-on « marché » en darija ?", opts:["mektab","suq","blasa","dar"], correct:1},
+  {kicker:"ÉMOTIONS", q:"« Farhan » veut dire :", opts:["Fatigué","En colère","Triste","Content"], correct:3},
+  {kicker:"EXPRESSIONS TEMPORELLES", q:"Comment dit-on « hier » en darija ?", opts:["lyoum","ghedda","lbareh","daba"], correct:2},
+];
+
+let current = 0;
+let answers = new Array(QUESTIONS.length).fill(null);
+let prenom = "", email = "", raison = "", contact = "", temps = "";
+
+function startTest(){
+  prenom = document.getElementById('input-prenom').value.trim();
+  email = document.getElementById('input-email').value.trim();
+  raison = document.getElementById('input-raison').value;
+  contact = document.getElementById('input-contact').value;
+  temps = document.getElementById('input-temps').value;
+  if(!prenom || !email){ alert("Merci de renseigner votre prénom et votre email pour continuer."); return; }
+  document.getElementById('step-intro').classList.add('hidden');
+  document.getElementById('step-quiz').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  document.getElementById('question-card').innerHTML = `
+    <div class="section-kicker">${q.kicker} — QUESTION ${current+1}/10</div>
+    <div class="q-text">${q.q}</div>
+    <div class="options">
+      ${q.opts.map((o,i)=>`<div class="opt ${answers[current]===i?'selected':''}" onclick="selectOption(${i})">${o}</div>`).join('')}
+    </div>
+  `;
+  const pct = Math.round((current/QUESTIONS.length)*100);
+  document.getElementById('progress-bar').style.width = pct + "%";
+  document.getElementById('progress-text').textContent = `Question ${current+1} / ${QUESTIONS.length}`;
+  document.getElementById('progress-pct').textContent = pct + "%";
+  document.getElementById('btn-prev').disabled = current === 0;
+  document.getElementById('btn-next').disabled = answers[current] === null;
+  document.getElementById('btn-next').textContent = current === QUESTIONS.length-1 ? "Voir mon résultat ✓" : "Suivant →";
+}
+
+function selectOption(i){
+  answers[current] = i;
+  renderQuestion();
+}
+
+function prevQuestion(){
+  if(current > 0){ current--; renderQuestion(); }
+}
+
+function nextQuestion(){
+  if(answers[current] === null) return;
+  if(current < QUESTIONS.length-1){
+    current++;
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult(){
+  document.getElementById('step-quiz').classList.add('hidden');
+  document.getElementById('step-result').classList.remove('hidden');
+
+  let score = 0;
+  QUESTIONS.forEach((q,i)=>{ if(answers[i]===q.correct) score++; });
+
+  document.getElementById('score-num').textContent = score + "/10";
+
+  let icon, subtitle, title, desc, color;
+
+  if(score <= 3){
+    icon = "🌱"; color = "#34D399";
+    subtitle = "VOTRE PROFIL";
+    title = "Débutant complet";
+    desc = "Parfait — la formation Darija Marocain Learn Right démarre exactement là où vous en êtes. Vous repartirez de zéro et progresserez semaine après semaine, sans aucun prérequis. Le programme est fait pour vous !";
+  } else if(score <= 6){
+    icon = "⭐"; color = "#5B9BFF";
+    subtitle = "VOTRE PROFIL";
+    title = "Débutant avec bases";
+    desc = "Vous avez déjà quelques notions en darija. La formation va rapidement structurer ce que vous savez et vous faire décoller dès le Mois 1. Vous progresserez vite !";
+  } else {
+    icon = "🚀"; color = "#E5A44B";
+    subtitle = "VOTRE PROFIL";
+    title = "Niveau intermédiaire";
+    desc = "Vous avez de bonnes bases ! Les Mois 1 et 2 vous permettront de consolider, et les Mois 3 et 4 vous emmèneront vers une vraie aisance conversationnelle en darija.";
+  }
+
+  const iconEl = document.getElementById('result-icon');
+  iconEl.textContent = icon;
+  iconEl.style.background = color + "15";
+  iconEl.style.border = "2px solid " + color;
+  document.getElementById('result-subtitle').textContent = subtitle;
+  document.getElementById('result-subtitle').style.color = color;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-desc').textContent = desc;
+  document.getElementById('score-num').style.color = color;
+
+  // Envoi silencieux vers Tally
+  try {
+    const params = new URLSearchParams({
+      prenom: prenom,
+      email: email,
+      score: score + "/10",
+      profil: title,
+      raison: raison,
+      contact: contact,
+      temps: temps
+    });
+    fetch("https://tally.so/r/RGlWx9?" + params.toString(), {mode:'no-cors'}).catch(()=>{});
+  } catch(e){}
+}
+</script>
+</body></html>
