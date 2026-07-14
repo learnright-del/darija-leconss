@@ -142,7 +142,6 @@ input.field-input:focus { border-color:#5B9BFF; }
       </div>
       <div class="result-desc" id="result-desc"></div>
       <a href="https://www.learnright.fr/products/darija-marocain?variant=58022207750408" target="_blank" class="cta-btn" id="cta-btn">Découvrir la formation →</a>
-      <a href="https://learnright.systeme.io/a85e69ae" target="_blank" id="capture-btn" style="display:block; text-align:center; margin-top:14px; color:#7DB8FF; font-size:13px; text-decoration:underline;">Recevoir mes résultats et des conseils darija par email</a>
     </div>
   </div>
 
@@ -257,6 +256,18 @@ function showResult(){
     email: email,
     message: "Score : " + score + "/10\nProfil : " + title + "\nRaison : " + raison + "\nContact avec le darija : " + contact + "\nTemps disponible : " + temps,
     time: new Date().toLocaleString('fr-FR')
+  }).catch(()=>{});
+
+  // Envoi automatique vers Systeme.io (via relais sécurisé Google Apps Script)
+  fetch("https://script.google.com/macros/s/AKfycbz6aVAKt729ArL71YCl0i_tbVeBHJ4yNrLD1Z8Qo0kCnl-YNVHfNyjuxs_9PNO-_BJ0/exec", {
+    method: "POST",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify({
+      prenom: prenom,
+      email: email,
+      score: score,
+      profil: title
+    })
   }).catch(()=>{});
 }
 </script>
