@@ -259,14 +259,15 @@ function showResult(){
   }).catch(()=>{});
 
   // Envoi automatique vers Systeme.io (via relais sécurisé Google Apps Script)
-  fetch("https://script.google.com/macros/s/AKfycbwPKd0xvoIjt8rrK7hJsIZcTPlNmN8juohS1Eyc0kBU6dH8rx2djIeDzTk_V6nMmMeq/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbx2v1KTITE4nRkY64CXsUSDK1XBllMEd6oXsmaU546z7FYlqwYicxZ5COloQ1s4-3my/exec", {
     method: "POST",
     headers: { "Content-Type": "text/plain" },
     body: JSON.stringify({
       prenom: prenom,
       email: email,
       score: score,
-      profil: title
+      profil: title,
+      source: "Darija"
     })
   }).catch(()=>{});
 }
