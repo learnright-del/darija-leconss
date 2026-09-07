@@ -60,6 +60,8 @@ input.field-input:focus { border-color:#5B9BFF; }
 .consent-row input { margin-top:3px; flex-shrink:0; }
 .divider { border-top:1px solid rgba(125,170,255,0.14); margin:20px 0; }
 </style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("T13h-8mdMY_7gdppx");</script>
 </head>
 <body>
   <div class="page-header">
@@ -248,10 +250,26 @@ function showResult(){
   cta.href = ctaUrl;
   cta.textContent = title.startsWith("Essentials") ? "Découvrir le programme Essentials →" : "Découvrir le programme Professional →";
 
-  // TODO (Audrey) : si tu veux recevoir automatiquement le résultat par email / dans ton CRM
-  // comme pour le test Darija (EmailJS + relais Google Apps Script vers Systeme.io),
-  // il suffit d'ajouter ici un appel EmailJS et/ou un fetch() vers ton webhook,
-  // avec les identifiants du service dédié à ce formulaire.
+  // Envoi via EmailJS (même compte que le test Darija)
+  emailjs.send("service_1js313k", "template_pbui5xp", {
+    name: prenom,
+    email: email,
+    message: "Score : " + score + "/" + MAX_SCORE + "\nNiveau : " + title,
+    time: new Date().toLocaleString('fr-FR')
+  }).catch(()=>{});
+
+  // Envoi automatique vers Systeme.io (via relais sécurisé Google Apps Script)
+  fetch("https://script.google.com/macros/s/AKfycbx2v1KTITE4nRkY64CXsUSDK1XBllMEd6oXsmaU546z7FYlqwYicxZ5COloQ1s4-3my/exec", {
+    method: "POST",
+    headers: { "Content-Type": "text/plain" },
+    body: JSON.stringify({
+      prenom: prenom,
+      email: email,
+      score: score,
+      profil: title,
+      source: "Anglais"
+    })
+  }).catch(()=>{});
 }
 </script>
 
