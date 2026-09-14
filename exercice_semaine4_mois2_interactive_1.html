@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Parler du passé et du futur — Exercices</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#F5F0E8;
+  background-image:
+    linear-gradient(rgba(196,120,90,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,120,90,0.06) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#3D2B1F;
+  padding: 40px 20px 80px;
+}
+.page-header { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto 36px; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#3D2B1F; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#C4785A,#B36B4E);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#C4785A; font-weight:600; }
+.badge { display:inline-block; border:1px solid rgba(196,120,90,0.35); background:rgba(196,120,90,0.08); color:#C4785A; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
+.hero { max-width:760px; margin:30px auto 36px; }
+.hero .kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.hero h1 { font-size:42px; font-weight:800; line-height:1.15; margin-bottom:18px; }
+.hero h1 .grad { color:#C4785A; }
+.hero p { color:#7A6754; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
+.hero .note-box { border:1px solid rgba(61,43,31,0.14); background:rgba(196,120,90,0.05); border-radius:14px; padding:18px 24px; color:#7A6754; font-size:14px; line-height:1.6; }
+.hero .note-box b { color:#3D2B1F; }
+.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:32px 36px; }
+.exo-kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.exo-question { font-size:21px; font-weight:800; margin-bottom:22px; line-height:1.4; }
+.exo-question .hl { color:#C4785A; font-weight:700; }
+.exo-divider { border-top:1px solid rgba(61,43,31,0.12); margin-bottom:22px; }
+.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#6FA378; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.exo-answer { border:1px solid rgba(111,163,120,0.35); background:rgba(111,163,120,0.10); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#3D2B1F; margin-bottom:14px; cursor:pointer; position:relative; }
+.exo-answer.hidden-answer { color:transparent; user-select:none; }
+.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#7A6754; font-size:13px; font-weight:500; }
+.exo-tip { font-size:13px; color:#7A6754; font-style:italic; }
+.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:40px 32px; text-align:center; }
+
+.intro-box {
+  max-width:760px; margin:0 auto 26px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:rgba(196,120,90,0.05);
+  border-radius:14px; padding:20px 26px;
+  color:#7A6754; font-size:14px; line-height:1.6;
+}
+.exo-instr { font-size:13px; color:#7A6754; margin-bottom:14px; }
+
+.quiz-box { max-width:760px; margin:0 auto 22px; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:28px 32px; }
+.quiz-q { margin-bottom:26px; }
+.quiz-q:last-child { margin-bottom:0; }
+.q-num { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+.q-text { font-size:16px; font-weight:700; color:#3D2B1F; margin-bottom:12px; line-height:1.4; }
+.q-options { display:flex; flex-direction:column; gap:9px; }
+.q-opt {
+  border:1px solid rgba(61,43,31,0.16); background:#FBF6EE;
+  border-radius:10px; padding:12px 16px; cursor:pointer; font-size:14px; color:#3D2B1F;
+  transition: background 0.15s, border-color 0.15s;
+}
+.q-opt:hover { background:rgba(196,120,90,0.10); }
+.q-opt.correct { border-color:#6FA378; background:rgba(111,163,120,0.18); font-weight:700; }
+.q-opt.incorrect { border-color:#B3564A; background:rgba(179,86,74,0.12); }
+.q-opt.disabled { cursor:default; }
+.q-feedback { margin-top:10px; font-size:13px; font-weight:600; }
+.q-feedback.ok { color:#6FA378; }
+.q-feedback.ko { color:#B3564A; }
+
+.dialogue-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.dialogue-line { display:flex; gap:14px; margin-bottom:16px; align-items:flex-start; }
+.dialogue-tag {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#3D2B1F;
+}
+.dialogue-arabic { font-size:17px; margin-bottom:2px; direction:rtl; }
+.dialogue-latin { font-size:13px; color:#C4785A; font-weight:600; }
+.dialogue-fr { font-size:12px; color:#7A6754; font-style:italic; }
+
+.exo-box {
+  max-width:760px; margin:0 auto 22px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:26px 32px;
+}
+.exo-box h3 { font-size:16px; margin-bottom:10px; color:#3D2B1F; }
+.exo-box p.exo-instr { font-size:13px; color:#7A6754; margin-bottom:14px; }
+.prod-name-input {
+  width:100%; background:#FBF6EE; border:1px solid rgba(61,43,31,0.18);
+  border-radius:8px; padding:10px 12px; color:#3D2B1F; font-size:14px; margin-bottom:12px;
+}
+.btn-send {
+  border:2px solid #C4785A; background:#C4785A; color:#3D2B1F;
+  font-size:14px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+  padding:12px 26px; border-radius:10px; cursor:pointer; margin-top:14px;
+}
+.btn-send:hover { opacity:0.9; }
+.btn-send:disabled { opacity:0.4; cursor:not-allowed; }
+.send-feedback { margin-top:12px; font-size:13px; font-weight:600; }
+.send-feedback.ok { color:#6FA378; }
+.send-feedback.ko { color:#B3564A; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div class="badge">SEMAINE 4 · MOIS 2 · EXERCICES</div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+
+  <div class="intro-box">💬 Nouveau dialogue : Sara demande à Karim ce qu'il a fait hier et ce qu'il va faire demain. Testez votre compréhension ci-dessous avant de vous entraîner.</div>
+
+  <div class="quiz-box">
+    <h3 style="margin-bottom:4px;">Compréhension du dialogue</h3>
+    <p class="exo-instr" style="margin-bottom:22px;">Cliquez sur une réponse. Si elle est fausse, la bonne réponse s'affiche en vert.</p>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 1</div>
+      <div class="q-text">Où Karim est-il allé hier ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0" onclick="answerQuiz(this)">Au marché</div>
+        <div class="q-opt" data-idx="1" onclick="answerQuiz(this)">Au travail</div>
+        <div class="q-opt" data-idx="2" onclick="answerQuiz(this)">À la gare</div>
+        <div class="q-opt" data-idx="3" onclick="answerQuiz(this)">Chez sa sœur</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 2</div>
+      <div class="q-text">Où Karim va-t-il aller aujourd'hui ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0" onclick="answerQuiz(this)">Au travail</div>
+        <div class="q-opt" data-idx="1" onclick="answerQuiz(this)">Au marché</div>
+        <div class="q-opt" data-idx="2" onclick="answerQuiz(this)">À Fès</div>
+        <div class="q-opt" data-idx="3" onclick="answerQuiz(this)">Chez son frère</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 3</div>
+      <div class="q-text">Quel mot du dialogue veut dire « mais » ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0" onclick="answerQuiz(this)">m3a</div>
+        <div class="q-opt" data-idx="1" onclick="answerQuiz(this)">walakin</div>
+        <div class="q-opt" data-idx="2" onclick="answerQuiz(this)">ghadi</div>
+        <div class="q-opt" data-idx="3" onclick="answerQuiz(this)">lbareh</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 4</div>
+      <div class="q-text">Avec qui Karim va-t-il travailler demain ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0" onclick="answerQuiz(this)">Sa sœur</div>
+        <div class="q-opt" data-idx="1" onclick="answerQuiz(this)">Son frère</div>
+        <div class="q-opt" data-idx="2" onclick="answerQuiz(this)">Sara</div>
+        <div class="q-opt" data-idx="3" onclick="answerQuiz(this)">Seul</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+  </div>
+
+  <div class="dialogue-box">
+    <h3 style="margin-bottom:6px;">Karim raconte son hier et son demain</h3>
+    <p style="font-size:13px;color:#7A6754;margin-bottom:20px;">Lisez à voix haute, puis couvrez la colonne française et répétez de mémoire.</p>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">S</div>
+      <div>
+        <div class="dialogue-arabic">كريم، فين مشيتي لبارح؟</div>
+        <div class="dialogue-latin">Karim, fin mchiti lbareh ?</div>
+        <div class="dialogue-fr">Karim, où es-tu allé hier ?</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">لبارح مشيت للخدمة، ولكن اليوم غادي نمشي للسوق.</div>
+        <div class="dialogue-latin">Lbareh mchit l-khedma, walakin lyoum ghadi nmchi l-suq.</div>
+        <div class="dialogue-fr">Hier je suis allé au travail, mais aujourd'hui je vais aller au marché.</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">S</div>
+      <div>
+        <div class="dialogue-arabic">وغدا؟</div>
+        <div class="dialogue-latin">W ghedda ?</div>
+        <div class="dialogue-fr">Et demain ?</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">غدا غادي نمشي للخدمة مع خويا.</div>
+        <div class="dialogue-latin">Ghedda ghadi nmchi l-khedma m3a khouya.</div>
+        <div class="dialogue-fr">Demain je vais aller au travail avec mon frère.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">DARIJA MAROCAIN — RÉVISION</div>
+    <h1>Parler du <span class="grad">passé et du futur</span></h1>
+    <p>Place à la pratique. Ces exercices reprennent le passé simple, le futur avec « ghadi » et les expressions temporelles.</p>
+    <div class="note-box"><b>7 exercices</b> à faire à voix haute. L'objectif final : être capable de raconter votre journée, hier et demain, en darija.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">PASSÉ</div>
+    <div class="exo-question">Mettez « mcha » (il est allé) au <span class="hl">féminin</span>.</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">mchat</div>
+    <div class="exo-tip">💡 On ajoute simplement un « t » final.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">PASSÉ</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« nous sommes allés »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">mchina</div>
+    <div class="exo-tip">💡 Première personne du pluriel du verbe « mcha ».</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">FUTUR</div>
+    <div class="exo-question">Comment former le futur en darija ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Avec « ghadi » + le verbe au présent.</div>
+    <div class="exo-tip">💡 Exemple : ghadi nmchi = je vais aller.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">FUTUR</div>
+    <div class="exo-question">Traduisez : <span class="hl">« je vais manger »</span></div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Ghadi nakol.</div>
+    <div class="exo-tip">💡 « ghadi » + « nakol » (je mange).</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">TEMPS</div>
+    <div class="exo-question">Quel est l'opposé de « lbareh » (hier) ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">ghedda (demain)</div>
+    <div class="exo-tip">💡 « lyoum » (aujourd'hui) se trouve entre les deux.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">TEMPS</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« toujours »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">dima</div>
+    <div class="exo-tip">💡 Pour exprimer une habitude ou une constance.</div>
+  </div>
+
+  <div class="exo-box">
+    <h3>Production libre</h3>
+    <p class="exo-instr">Racontez, en darija, ce que vous avez fait hier et ce que vous allez faire demain. Utilisez au moins un verbe au passé (comme « mcha ») et un verbe au futur avec « ghadi ».</p>
+    <input type="text" id="prod-prenom" class="prod-name-input" placeholder="Votre prénom">
+    <textarea id="prod-textarea" style="width:100%;min-height:140px;background:#FBF6EE;border:1px solid rgba(61,43,31,0.18);border-radius:8px;padding:12px;color:#3D2B1F;font-size:14px;" placeholder="Écrivez votre texte ici..."></textarea>
+    <button class="btn-send" id="prod-send-btn" onclick="sendProduction()">Valider et envoyer</button>
+    <div class="send-feedback" id="prod-send-feedback"></div>
+    <p style="margin-top:14px;font-size:13px;color:#6FA378;">💡 Exemple pour vous inspirer : « Lbareh mchit l-suq, ghedda ghadi nmchi l-khedma. »</p>
+  </div>
+
+  <div class="end-card">
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #6FA378;background:rgba(111,163,120,0.12);display:flex;align-items:center;justify-content:center;font-size:24px;color:#6FA378;margin:0 auto 18px;">&#10003;</div>
+    <div style="color:#6FA378;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
+    <div style="width:50px;height:3px;background:#B8873F;margin:0 auto 28px;"></div>
+    <div style="color:#B8873F;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">بالأمس تعلمنا، اليوم نعمل، وغدا ننجح</div>
+    <div style="color:#3D2B1F;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"Hier nous avons appris, aujourd'hui nous agissons, et demain nous réussirons."</div>
+    <div style="color:#7A6754;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
+    <div style="border:1px solid rgba(61,43,31,0.14);background:rgba(196,120,90,0.05);border-radius:14px;padding:18px 24px;color:#7A6754;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#3D2B1F;'>tout le Mois 2</b> : le marché, la nourriture, les transports, et le passé/futur. Bravo pour ce travail — direction le Mois 3 !</div>
+  </div>
+
+<script>
+function answerQuiz(el){
+  const group = el.parentElement;
+  const qBlock = group.parentElement;
+  if (qBlock.dataset.answered === "1") return;
+  qBlock.dataset.answered = "1";
+  const correctIdx = qBlock.getAttribute('data-correct');
+  const opts = group.querySelectorAll('.q-opt');
+  const feedback = qBlock.querySelector('.q-feedback');
+  const chosenIdx = el.getAttribute('data-idx');
+  opts.forEach(o => o.classList.add('disabled'));
+  if (chosenIdx === correctIdx) {
+    el.classList.add('correct');
+    feedback.textContent = "✅ Bonne réponse !";
+    feedback.className = "q-feedback ok";
+  } else {
+    el.classList.add('incorrect');
+    opts.forEach(o => { if (o.getAttribute('data-idx') === correctIdx) o.classList.add('correct'); });
+    feedback.textContent = "❌ Pas tout à fait — la bonne réponse est surlignée en vert.";
+    feedback.className = "q-feedback ko";
+  }
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+// ⚠️ À CONFIGURER : remplace ces 3 valeurs par celles de ton compte EmailJS (emailjs.com, gratuit)
+const EMAILJS_PUBLIC_KEY  = "T13h-8mdMY_7gdppx";
+const EMAILJS_SERVICE_ID  = "service_1js313k";
+const EMAILJS_TEMPLATE_ID = "template_jplu7il";
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+function sendProduction(){
+  const prenom = document.getElementById('prod-prenom').value.trim();
+  const message = document.getElementById('prod-textarea').value.trim();
+  const feedback = document.getElementById('prod-send-feedback');
+  const btn = document.getElementById('prod-send-btn');
+  if(!prenom || !message){
+    feedback.textContent = "Merci de remplir votre prénom et votre texte avant d'envoyer.";
+    feedback.className = "send-feedback ko";
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = "Envoi en cours...";
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    prenom: prenom,
+    message: message,
+    exercice: "Semaine 4 Mois 2 — Production libre",
+    date: new Date().toLocaleDateString('fr-FR')
+  }).then(function(){
+    feedback.textContent = "✅ Envoyé ! Votre professeur a bien reçu votre texte.";
+    feedback.className = "send-feedback ok";
+    btn.textContent = "Envoyé ✓";
+  }, function(error){
+    feedback.textContent = "❌ L'envoi a échoué. Réessayez, ou vérifiez votre connexion.";
+    feedback.className = "send-feedback ko";
+    btn.disabled = false;
+    btn.textContent = "Valider et envoyer";
+  });
+}
+</script>
+</body></html>
