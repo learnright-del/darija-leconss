@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Parler de la nourriture — Exercices</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#F5F0E8;
+  background-image:
+    linear-gradient(rgba(196,120,90,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,120,90,0.06) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#3D2B1F;
+  padding: 40px 20px 80px;
+}
+.page-header { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto 36px; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#3D2B1F; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#C4785A,#B36B4E);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#C4785A; font-weight:600; }
+.badge { display:inline-block; border:1px solid rgba(196,120,90,0.35); background:rgba(196,120,90,0.08); color:#C4785A; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
+.hero { max-width:760px; margin:30px auto 36px; }
+.hero .kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.hero h1 { font-size:42px; font-weight:800; line-height:1.15; margin-bottom:18px; }
+.hero h1 .grad { color:#C4785A; }
+.hero p { color:#7A6754; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
+.hero .note-box { border:1px solid rgba(61,43,31,0.14); background:rgba(196,120,90,0.05); border-radius:14px; padding:18px 24px; color:#7A6754; font-size:14px; line-height:1.6; }
+.hero .note-box b { color:#3D2B1F; }
+.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:32px 36px; }
+.exo-kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.exo-question { font-size:21px; font-weight:800; margin-bottom:22px; line-height:1.4; }
+.exo-question .hl { color:#C4785A; font-weight:700; }
+.exo-divider { border-top:1px solid rgba(61,43,31,0.12); margin-bottom:22px; }
+.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#6FA378; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.exo-answer { border:1px solid rgba(111,163,120,0.35); background:rgba(111,163,120,0.10); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#3D2B1F; margin-bottom:14px; cursor:pointer; position:relative; }
+.exo-answer.hidden-answer { color:transparent; user-select:none; }
+.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#7A6754; font-size:13px; font-weight:500; }
+.exo-tip { font-size:13px; color:#7A6754; font-style:italic; }
+.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:40px 32px; text-align:center; }
+
+.intro-box {
+  max-width:760px; margin:0 auto 26px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:rgba(196,120,90,0.05);
+  border-radius:14px; padding:20px 26px;
+  color:#7A6754; font-size:14px; line-height:1.6;
+}
+.exo-instr { font-size:13px; color:#7A6754; margin-bottom:14px; }
+
+.quiz-box { max-width:760px; margin:0 auto 22px; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:28px 32px; }
+.quiz-q { margin-bottom:26px; }
+.quiz-q:last-child { margin-bottom:0; }
+.q-num { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+.q-text { font-size:16px; font-weight:700; color:#3D2B1F; margin-bottom:12px; line-height:1.4; }
+.q-options { display:flex; flex-direction:column; gap:9px; }
+.q-opt {
+  border:1px solid rgba(61,43,31,0.16); background:#FBF6EE;
+  border-radius:10px; padding:12px 16px; cursor:pointer; font-size:14px; color:#3D2B1F;
+  transition: background 0.15s, border-color 0.15s;
+}
+.q-opt:hover { background:rgba(196,120,90,0.10); }
+.q-opt.correct { border-color:#6FA378; background:rgba(111,163,120,0.18); font-weight:700; }
+.q-opt.incorrect { border-color:#B3564A; background:rgba(179,86,74,0.12); }
+.q-opt.disabled { cursor:default; }
+.q-feedback { margin-top:10px; font-size:13px; font-weight:600; }
+.q-feedback.ok { color:#6FA378; }
+.q-feedback.ko { color:#B3564A; }
+
+.dialogue-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.dialogue-line { display:flex; gap:14px; margin-bottom:16px; align-items:flex-start; }
+.dialogue-tag {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#3D2B1F;
+}
+.dialogue-arabic { font-size:17px; margin-bottom:2px; direction:rtl; }
+.dialogue-latin { font-size:13px; color:#C4785A; font-weight:600; }
+.dialogue-fr { font-size:12px; color:#7A6754; font-style:italic; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div class="badge">SEMAINE 2 · MOIS 2 · EXERCICES</div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+
+  <div class="intro-box">🎬 Nouveau dialogue : Karim demande à sa mère quelles épices elle met dans le couscous (vidéo incluse avec cet exercice). Testez votre compréhension ci-dessous avant de vous entraîner.</div>
+
+  <div class="quiz-box">
+    <h3 style="margin-bottom:4px;">Compréhension du dialogue</h3>
+    <p class="exo-instr" style="margin-bottom:22px;">Cliquez sur une réponse. Si elle est fausse, la bonne réponse s'affiche en vert.</p>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 1</div>
+      <div class="q-text">Quelles sont les deux premières épices citées par la mère ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0" onclick="answerQuiz(this)">Cannelle et curcuma</div>
+        <div class="q-opt" data-idx="1" onclick="answerQuiz(this)">Safran et cumin</div>
+        <div class="q-opt" data-idx="2" onclick="answerQuiz(this)">Gingembre et sel</div>
+        <div class="q-opt" data-idx="3" onclick="answerQuiz(this)">Coriandre et cannelle</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 2</div>
+      <div class="q-text">Comment dit-on « paprika » dans ce dialogue ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0" onclick="answerQuiz(this)">Karfa</div>
+        <div class="q-opt" data-idx="1" onclick="answerQuiz(this)">Tamira</div>
+        <div class="q-opt" data-idx="2" onclick="answerQuiz(this)">Ksbour</div>
+        <div class="q-opt" data-idx="3" onclick="answerQuiz(this)">Arkoum</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 3</div>
+      <div class="q-text">À la fin, c'est Karim qui devine les 3 dernières épices. Lesquelles ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0" onclick="answerQuiz(this)">Safran, cumin et paprika</div>
+        <div class="q-opt" data-idx="1" onclick="answerQuiz(this)">Sel, gingembre et curcuma</div>
+        <div class="q-opt" data-idx="2" onclick="answerQuiz(this)">Cannelle, coriandre et sel</div>
+        <div class="q-opt" data-idx="3" onclick="answerQuiz(this)">Paprika, curcuma et cumin</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="2">
+      <div class="q-num">Question 4</div>
+      <div class="q-text">Comment dit-on « curcuma » en darija dans ce dialogue ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0" onclick="answerQuiz(this)">Karfa</div>
+        <div class="q-opt" data-idx="1" onclick="answerQuiz(this)">Skinjbir</div>
+        <div class="q-opt" data-idx="2" onclick="answerQuiz(this)">Arkoum</div>
+        <div class="q-opt" data-idx="3" onclick="answerQuiz(this)">Ksbour</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+  </div>
+
+  <div class="dialogue-box">
+    <h3 style="margin-bottom:6px;">Karim demande la recette du couscous</h3>
+    <p style="font-size:13px;color:#7A6754;margin-bottom:20px;">Lisez à voix haute, puis couvrez la colonne française et répétez de mémoire.</p>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">يما، آش كتدير في الكسكسو من الحوايج؟</div>
+        <div class="dialogue-latin">Yemma, ash kat-dir fi lkouskous men lhwayej ?</div>
+        <div class="dialogue-fr">Maman, qu'est-ce que tu mets dans le couscous comme épices ?</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">M</div>
+      <div>
+        <div class="dialogue-arabic">كندير زعفران، كمون، قصبور، قرفة، و تمهيرة.</div>
+        <div class="dialogue-latin">Kandir zaafran, kamoun, ksbour, karfa, w tamira.</div>
+        <div class="dialogue-fr">Je mets du safran, du cumin, de la coriandre, de la cannelle, et du paprika.</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">و ملح، سكنجبير، و اركوم؟</div>
+        <div class="dialogue-latin">W melh, skinjbir, w arkoum ?</div>
+        <div class="dialogue-fr">Et du sel, du gingembre, et du curcuma ?</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">M</div>
+      <div>
+        <div class="dialogue-arabic">آه، صافي! هادي كلشي.</div>
+        <div class="dialogue-latin">Ah, safi ! Hadi kolchi.</div>
+        <div class="dialogue-fr">Ah, exactement ! C'est tout.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">DARIJA MAROCAIN — RÉVISION</div>
+    <h1>Parler de la <span class="grad">nourriture</span></h1>
+    <p>Place à la pratique. Ces exercices reprennent les plats marocains, les ingrédients, les boissons et le vocabulaire du restaurant.</p>
+    <div class="note-box"><b>7 exercices</b> à faire à voix haute, comme si vous étiez à table ou au restaurant. Essayez de répondre <b>avant</b> de regarder la correction.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">VOCABULAIRE</div>
+    <div class="exo-question">Comment s'appelle la <span class="hl">soupe traditionnelle</span> souvent mangée pendant le Ramadan ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Harira</div>
+    <div class="exo-tip">💡 Une des soupes les plus connues de la cuisine marocaine.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">INGRÉDIENTS</div>
+    <div class="exo-question">Quels sont les deux ingrédients de base présents dans presque tous les plats salés ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">bsl (oignon) · toum (ail)</div>
+    <div class="exo-tip">💡 Le duo incontournable de la cuisine marocaine.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">BOISSON</div>
+    <div class="exo-question">Quelle plante est indispensable pour préparer le thé marocain ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">nana (menthe)</div>
+    <div class="exo-tip">💡 Le thé à la menthe est la boisson emblématique du pays.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">RESTAURANT</div>
+    <div class="exo-question">Traduisez : <span class="hl">« Je voudrais l'addition »</span></div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Bghit l hsab.</div>
+    <div class="exo-tip">💡 « l hsab » = l'addition, à demander en fin de repas.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">COMPLIMENT</div>
+    <div class="exo-question">Comment complimenter un plat délicieux ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Mzyan bzaf !</div>
+    <div class="exo-tip">💡 Littéralement « très bon » — à dire au cuisinier ou au serveur.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">VOCABULAIRE</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« farine »</span> et <span class="hl">« huile »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">dqiq · zit</div>
+    <div class="exo-tip">💡 Deux ingrédients de base de la cuisine marocaine.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">PHRASE LIBRE</div>
+    <div class="exo-question">À voix haute, commandez un plat et une boisson au restaurant.</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Exemple : « Bghit tajine w atay, 3afak. »</div>
+    <div class="exo-tip">💡 Improvisez avec vos plats marocains préférés.</div>
+  </div>
+
+  <div class="end-card">
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #6FA378;background:rgba(111,163,120,0.12);display:flex;align-items:center;justify-content:center;font-size:24px;color:#6FA378;margin:0 auto 18px;">&#10003;</div>
+    <div style="color:#6FA378;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
+    <div style="width:50px;height:3px;background:#B8873F;margin:0 auto 28px;"></div>
+    <div style="color:#B8873F;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">الطعام الجيد يصنع بالحب</div>
+    <div style="color:#3D2B1F;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"Un bon plat se prépare avec amour."</div>
+    <div style="color:#7A6754;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
+    <div style="border:1px solid rgba(61,43,31,0.14);background:rgba(196,120,90,0.05);border-radius:14px;padding:18px 24px;color:#7A6754;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#3D2B1F;'>toute la Semaine 2 du Mois 2</b> : les plats marocains, les ingrédients, les boissons et le restaurant. Refaites ces 7 exercices à voix haute avant de passer à la Semaine 3.</div>
+  </div>
+
+<script>
+function answerQuiz(el){
+  const group = el.parentElement;
+  const qBlock = group.parentElement;
+  if (qBlock.dataset.answered === "1") return;
+  qBlock.dataset.answered = "1";
+  const correctIdx = qBlock.getAttribute('data-correct');
+  const opts = group.querySelectorAll('.q-opt');
+  const feedback = qBlock.querySelector('.q-feedback');
+  const chosenIdx = el.getAttribute('data-idx');
+  opts.forEach(o => o.classList.add('disabled'));
+  if (chosenIdx === correctIdx) {
+    el.classList.add('correct');
+    feedback.textContent = "✅ Bonne réponse !";
+    feedback.className = "q-feedback ok";
+  } else {
+    el.classList.add('incorrect');
+    opts.forEach(o => { if (o.getAttribute('data-idx') === correctIdx) o.classList.add('correct'); });
+    feedback.textContent = "❌ Pas tout à fait — la bonne réponse est surlignée en vert.";
+    feedback.className = "q-feedback ko";
+  }
+}
+</script>
+</body></html>
