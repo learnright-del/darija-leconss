@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Bilan Mois 2 — Quiz</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#F5F0E8;
+  background-image:
+    linear-gradient(rgba(196,120,90,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,120,90,0.06) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#3D2B1F;
+  padding: 40px 20px 80px;
+  min-height: 100vh;
+}
+.page-header {
+  display:flex; justify-content:space-between; align-items:center;
+  max-width:760px; margin:0 auto 30px;
+}
+.page-title { font-size:26px; font-weight:800; }
+.page-title .grad { background:linear-gradient(90deg,#C4785A,#B8873F); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#3D2B1F; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#C4785A,#B36B4E);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#C4785A; font-weight:600; }
+.badge {
+  display:inline-block; border:1px solid rgba(196,120,90,0.35); background:rgba(196,120,90,0.08);
+  color:#C4785A; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  padding:5px 12px; border-radius:14px; margin-bottom:10px;
+}
+.card {
+  max-width:760px; margin:0 auto 22px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:30px 34px;
+}
+.intro-box {
+  max-width:760px; margin:0 auto 26px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:rgba(196,120,90,0.05);
+  border-radius:14px; padding:20px 26px;
+  color:#7A6754; font-size:14px; line-height:1.6;
+}
+.intro-box b { color:#3D2B1F; }
+label.field-label { display:block; font-size:13px; color:#B8873F; font-weight:700; margin-bottom:8px; letter-spacing:0.5px; }
+input.field-input {
+  width:100%; background:#FBF6EE; border:1px solid rgba(61,43,31,0.18);
+  border-radius:10px; padding:12px 14px; color:#3D2B1F; font-size:15px; margin-bottom:20px;
+}
+.section-kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.q-text { font-size:18px; font-weight:800; margin-bottom:18px; line-height:1.4; }
+.q-hint { font-size:13px; color:#7A6754; font-style:italic; margin:-10px 0 18px; }
+.options { display:flex; flex-direction:column; gap:10px; }
+.opt {
+  border:1px solid rgba(61,43,31,0.16); background:#FBF6EE;
+  border-radius:10px; padding:13px 18px; cursor:pointer; font-size:15px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.opt:hover { background:rgba(196,120,90,0.08); }
+.opt.selected { border-color:#C4785A; background:rgba(196,120,90,0.14); color:#3D2B1F; font-weight:600; }
+.text-answer-wrap { margin-top:4px; }
+input.text-answer-input {
+  width:100%; background:#FBF6EE; border:1px solid rgba(61,43,31,0.2);
+  border-radius:10px; padding:14px 16px; color:#3D2B1F; font-size:16px; font-weight:600;
+}
+input.text-answer-input:focus { outline:none; border-color:#6FA378; background:#fff; }
+.progress-bar-wrap { max-width:760px; margin:0 auto 24px; height:6px; background:rgba(61,43,31,0.08); border-radius:4px; overflow:hidden; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#C4785A,#B8873F); width:0%; transition:width 0.3s; }
+.btn-row { max-width:760px; margin:0 auto; display:flex; justify-content:flex-end; gap:12px; }
+.btn {
+  border:2px solid #C4785A; background:rgba(196,120,90,0.08); color:#C4785A;
+  font-size:14px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase;
+  padding:12px 26px; border-radius:10px; cursor:pointer;
+}
+.btn:hover { background:rgba(196,120,90,0.18); }
+.btn:disabled { opacity:0.35; cursor:not-allowed; }
+.btn.primary { background:#C4785A; color:#fff; }
+.btn.primary:hover { background:#B36B4E; }
+.hidden { display:none !important; }
+.result-score { text-align:center; }
+.result-score .num { font-size:64px; font-weight:800; color:#6FA378; }
+.result-score .label { color:#7A6754; font-size:15px; margin-top:6px; }
+.section-recap { font-size:14px; color:#7A6754; margin-top:6px; }
+.section-recap b { color:#3D2B1F; }
+iframe.tally-frame { width:100%; height:600px; border:none; border-radius:14px; margin-top:10px; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div>
+      <div class="page-title">Bilan <span class="grad">Mois 2</span></div>
+      <div style="color:#C4785A;font-size:13px;font-weight:600;margin-top:4px;">RÉVISION SEMAINES 1 À 4</div>
+    </div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+
+  <!-- ÉTAPE 0 : IDENTITÉ -->
+  <div id="step-intro">
+    <div class="intro-box">
+      Vous voilà au bout de votre deuxième mois de darija marocain ! Ce quiz reprend l'ensemble de ce que vous avez appris : le marché et la négociation, la nourriture et le restaurant, les transports et les directions, et le passé/futur avec les expressions temporelles. <b>33 questions</b> — les 24 premières à choix multiple, et 9 questions à <b>réponse libre</b> où vous écrivez vous-même la forme du verbe ou la traduction. Répondez sans regarder vos notes.
+    </div>
+    <div class="card">
+      <label class="field-label">Prénom</label>
+      <input class="field-input" id="input-prenom" type="text" placeholder="Votre prénom">
+      <label class="field-label">Email</label>
+      <input class="field-input" id="input-email" type="email" placeholder="votre@email.com">
+      <div class="btn-row" style="justify-content:flex-start;">
+        <button class="btn primary" onclick="startQuiz()">Commencer le quiz</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 : QUIZ -->
+  <div id="step-quiz" class="hidden">
+    <div class="progress-bar-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+    <div class="card" id="question-card"></div>
+    <div class="btn-row">
+      <button class="btn" id="btn-prev" onclick="prevQuestion()">Précédent</button>
+      <button class="btn primary" id="btn-next" onclick="nextQuestion()" disabled>Suivant</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 2 : RÉSULTATS -->
+  <div id="step-result" class="hidden">
+    <div class="card result-score">
+      <div class="num" id="result-num">0/33</div>
+      <div class="label" id="result-label">Calcul en cours...</div>
+    </div>
+    <div class="card">
+      <div class="section-kicker">DÉTAIL PAR SECTION</div>
+      <div id="section-recap"></div>
+    </div>
+    <div class="card">
+      <div class="section-kicker">ENVOYER MES RÉSULTATS</div>
+      <p style="color:#7A6754;font-size:14px;margin-bottom:14px;">Vos réponses ont été préremplies ci-dessous. Cliquez sur "Envoyer" dans le formulaire pour que votre professeur reçoive vos résultats par email.</p>
+      <iframe class="tally-frame" id="tally-iframe" src=""></iframe>
+    </div>
+  </div>
+
+<script>
+const QUESTIONS = [
+  {type:"mcq", section:"Le marché — Vocabulaire", q:"Comment dit-on « marché » ?", opts:["suq","bayi3","taman"], correct:0},
+  {type:"mcq", section:"Le marché — Vocabulaire", q:"Comment dit-on « vendeur » ?", opts:["klyent","bayi3","flus"], correct:1},
+  {type:"mcq", section:"Le marché — Vocabulaire", q:"« ghali » veut dire :", opts:["Cher","Pas cher","Argent"], correct:0},
+
+  {type:"mcq", section:"Le marché — Négocier", q:"Comment dit-on « Je veux » ?", opts:["bghit","safi","wakha"], correct:0},
+  {type:"mcq", section:"Le marché — Négocier", q:"Que veut dire « naqs lia chwiya » ?", opts:["Baisse-moi un peu","C'est trop cher","D'accord"], correct:0},
+  {type:"mcq", section:"Le marché — Négocier", q:"« bech-hal » veut dire :", opts:["Beaucoup","Combien / à combien","Pas cher"], correct:1},
+
+  {type:"mcq", section:"Le marché — Quantités", q:"Comment dit-on « un demi-kilo » ?", opts:["nos kilo","rob3","wahda"], correct:0},
+  {type:"mcq", section:"Le marché — Quantités", q:"« juj » veut dire :", opts:["Un","Deux","Trois"], correct:1},
+  {type:"mcq", section:"Le marché — Quantités", q:"Comment dit-on « un peu » ?", opts:["bezzaf","chwiya","safi"], correct:1},
+
+  {type:"mcq", section:"Nourriture — Plats & ingrédients", q:"Quel plat est une soupe traditionnelle ?", opts:["tajine","harira","msemen"], correct:1},
+  {type:"mcq", section:"Nourriture — Plats & ingrédients", q:"Comment dit-on « farine » ?", opts:["zit","dqiq","toum"], correct:1},
+  {type:"mcq", section:"Nourriture — Plats & ingrédients", q:"« zaafran » veut dire :", opts:["Cumin","Gingembre","Safran"], correct:2},
+
+  {type:"mcq", section:"Nourriture — Boissons & restaurant", q:"Comment dit-on « thé » ?", opts:["atay","qhwa","hlib"], correct:0},
+  {type:"mcq", section:"Nourriture — Boissons & restaurant", q:"Que veut dire « l hsab » ?", opts:["La carte / le menu","L'addition","Le serveur"], correct:1},
+  {type:"mcq", section:"Nourriture — Boissons & restaurant", q:"Comment complimenter un plat délicieux ?", opts:["mzyan bzaf","choukran bzaf","bsaha"], correct:0},
+
+  {type:"mcq", section:"Transports — Moyens & directions", q:"Comment dit-on « train » ?", opts:["tobis","tran","tyara"], correct:1},
+  {type:"mcq", section:"Transports — Moyens & directions", q:"« nishan » veut dire :", opts:["À droite","À gauche","Tout droit"], correct:2},
+  {type:"mcq", section:"Transports — Moyens & directions", q:"Quel est l'opposé de « qrib » (proche) ?", opts:["b3id","hna","hadak"], correct:0},
+
+  {type:"mcq", section:"Transports — Taxi & voyage", q:"Comment demander « Combien je dois payer ? » ?", opts:["chhal khassni nkhalas ?","wqef hna","zid chwiya"], correct:0},
+  {type:"mcq", section:"Transports — Taxi & voyage", q:"Comment dit-on « je suis arrivé » ?", opts:["safar","wselt","rja3"], correct:1},
+  {type:"mcq", section:"Transports — Taxi & voyage", q:"« mazal bqi » veut dire :", opts:["Il reste encore","Je reviens","C'est bien"], correct:0},
+
+  {type:"mcq", section:"Temps & expressions", q:"Quel est l'opposé de « lbareh » (hier) ?", opts:["lyoum","ghedda","daba"], correct:1},
+  {type:"mcq", section:"Temps & expressions", q:"Comment dit-on « toujours » ?", opts:["dima","daba","mnbad"], correct:0},
+  {type:"mcq", section:"Temps & expressions", q:"Comment dit-on « maintenant » ?", opts:["mn qbel","daba","mnbad"], correct:1},
+
+  {type:"text", section:"Conjugaison du passé (mcha)", q:"Conjuguez « mcha » (aller) au passé avec « ana » (je) :", hint:"Je suis allé(e)", accepted:["mchit"]},
+  {type:"text", section:"Conjugaison du passé (mcha)", q:"Conjuguez « mcha » (aller) au passé avec « houwa » (il) :", hint:"Il est allé", accepted:["mcha"]},
+  {type:"text", section:"Conjugaison du passé (mcha)", q:"Conjuguez « mcha » (aller) au passé avec « hiya » (elle) :", hint:"Elle est allée — on ajoute un « t » final.", accepted:["mchat"]},
+  {type:"text", section:"Conjugaison du passé (mcha)", q:"Conjuguez « mcha » (aller) au passé avec « hna » (nous) :", hint:"Nous sommes allés", accepted:["mchina"]},
+  {type:"text", section:"Conjugaison du passé (mcha)", q:"Conjuguez « mcha » (aller) au passé avec « ntouma » (vous) :", hint:"Vous êtes allés", accepted:["mchitu"]},
+  {type:"text", section:"Conjugaison du passé (mcha)", q:"Conjuguez « mcha » (aller) au passé avec « huma » (ils/elles) :", hint:"Ils / elles sont allés", accepted:["mchaw"]},
+
+  {type:"text", section:"Le futur avec ghadi", q:"Traduisez : « Je vais manger » (avec « ghadi ») :", hint:"ghadi + nakol", accepted:["ghadinakol"]},
+  {type:"text", section:"Le futur avec ghadi", q:"Traduisez : « Je vais boire » (avec « ghadi ») :", hint:"ghadi + nchrab", accepted:["ghadinchrab"]},
+  {type:"text", section:"Le futur avec ghadi", q:"Traduisez : « Il va venir » (avec « ghadi ») :", hint:"ghadi + yji", accepted:["ghadiyji"]},
+];
+
+let current = 0;
+let answers = new Array(QUESTIONS.length).fill(null);
+let prenom = "", email = "";
+
+function normalize(s){
+  return (s||"").toLowerCase().trim().replace(/\s+/g,"");
+}
+
+function startQuiz(){
+  prenom = document.getElementById('input-prenom').value.trim();
+  email = document.getElementById('input-email').value.trim();
+  if(!prenom || !email){ alert("Merci de renseigner votre prénom et votre email avant de commencer."); return; }
+  document.getElementById('step-intro').classList.add('hidden');
+  document.getElementById('step-quiz').classList.remove('hidden');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  const card = document.getElementById('question-card');
+  if(q.type === "text"){
+    const currentVal = answers[current] || "";
+    card.innerHTML = `
+      <div class="section-kicker">${q.section.toUpperCase()} — QUESTION ${current+1}/${QUESTIONS.length}</div>
+      <div class="q-text">${q.q}</div>
+      ${q.hint ? `<div class="q-hint">💡 ${q.hint}</div>` : ''}
+      <div class="text-answer-wrap">
+        <input type="text" class="text-answer-input" id="text-answer-input" placeholder="Écrivez votre réponse en arabizi..." value="${currentVal.replace(/"/g,'&quot;')}" oninput="answerText(this.value)" autocomplete="off">
+      </div>
+    `;
+    document.getElementById('text-answer-input').focus();
+  } else {
+    card.innerHTML = `
+      <div class="section-kicker">${q.section.toUpperCase()} — QUESTION ${current+1}/${QUESTIONS.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="options">
+        ${q.opts.map((o,i)=>`<div class="opt ${answers[current]===i?'selected':''}" onclick="selectOption(${i})">${o}</div>`).join('')}
+      </div>
+    `;
+  }
+  document.getElementById('progress-bar').style.width = ((current)/QUESTIONS.length*100)+"%";
+  document.getElementById('btn-prev').disabled = current===0;
+  document.getElementById('btn-next').disabled = !hasAnswer(current);
+  document.getElementById('btn-next').textContent = current===QUESTIONS.length-1 ? "Voir mes résultats" : "Suivant";
+}
+
+function hasAnswer(i){
+  const q = QUESTIONS[i];
+  if(q.type === "text"){ return answers[i] !== null && answers[i].trim() !== ""; }
+  return answers[i] !== null;
+}
+
+function selectOption(i){
+  answers[current] = i;
+  renderQuestion();
+}
+
+function answerText(val){
+  answers[current] = val;
+  document.getElementById('btn-next').disabled = !hasAnswer(current);
+}
+
+function prevQuestion(){
+  if(current>0){ current--; renderQuestion(); }
+}
+
+function nextQuestion(){
+  if(!hasAnswer(current)) return;
+  if(current < QUESTIONS.length-1){
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function isCorrect(i){
+  const q = QUESTIONS[i];
+  if(q.type === "text"){
+    const given = normalize(answers[i]);
+    return q.accepted.some(a => normalize(a) === given);
+  }
+  return answers[i] === q.correct;
+}
+
+function showResults(){
+  document.getElementById('step-quiz').classList.add('hidden');
+  document.getElementById('step-result').classList.remove('hidden');
+
+  let score = 0;
+  const sectionStats = {};
+  QUESTIONS.forEach((q,i)=>{
+    if(!sectionStats[q.section]) sectionStats[q.section] = {correct:0, total:0};
+    sectionStats[q.section].total++;
+    if(isCorrect(i)){ score++; sectionStats[q.section].correct++; }
+  });
+  const total = QUESTIONS.length;
+  const pct = Math.round(score/total*100);
+  let resultat = "À revoir";
+  if(pct>=85) resultat = "Excellent";
+  else if(pct>=65) resultat = "Bien";
+  else if(pct>=45) resultat = "Moyen";
+
+  document.getElementById('result-num').textContent = score+"/"+total;
+  document.getElementById('result-label').textContent = pct+"% — "+resultat;
+
+  let recapHtml = "";
+  const sectionsDetailsParts = [];
+  for(const [sec, stat] of Object.entries(sectionStats)){
+    recapHtml += `<div class="section-recap"><b>${sec}</b> : ${stat.correct}/${stat.total}</div>`;
+    sectionsDetailsParts.push(`${sec}: ${stat.correct}/${stat.total}`);
+  }
+  document.getElementById('section-recap').innerHTML = recapHtml;
+  const sectionsDetails = sectionsDetailsParts.join(" | ");
+
+  const dateQuiz = new Date().toLocaleDateString('fr-FR');
+
+  const params = new URLSearchParams({
+    prenom: prenom,
+    email: email,
+    score: score,
+    sur: total,
+    pourcentage: pct + "%",
+    resultat: resultat,
+    sections_details: sectionsDetails,
+    date_quiz: dateQuiz
+  });
+
+  document.getElementById('tally-iframe').src = "https://tally.so/r/RGg0dK?" + params.toString();
+}
+</script>
+</body></html>
