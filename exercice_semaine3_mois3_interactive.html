@@ -1,41 +1,115 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="UTF-8">
-<title>Comprendre l' argot et l'humour — Exercices</title>
+<title>Argot — Exercices</title>
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
 body {
-  background:#0A0E17;
+  background:#F5F0E8;
   background-image:
-    linear-gradient(rgba(125,170,255,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(125,170,255,0.045) 1px, transparent 1px);
+    linear-gradient(rgba(196,120,90,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,120,90,0.06) 1px, transparent 1px);
   background-size: 38px 38px;
   font-family: 'Segoe UI', Arial, sans-serif;
-  color:#F4F6FA;
+  color:#3D2B1F;
   padding: 40px 20px 80px;
 }
 .page-header { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto 36px; }
-.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#fff; }
-.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#5B9BFF,#7B6CF0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
-.logo .right { color:#7DB8FF; font-weight:600; }
-.badge { display:inline-block; border:1px solid rgba(125,184,255,0.35); background:rgba(125,184,255,0.06); color:#7DB8FF; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#3D2B1F; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#C4785A,#B36B4E);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#C4785A; font-weight:600; }
+.badge { display:inline-block; border:1px solid rgba(196,120,90,0.35); background:rgba(196,120,90,0.08); color:#C4785A; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
 .hero { max-width:760px; margin:30px auto 36px; }
-.hero .kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.hero .kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
 .hero h1 { font-size:42px; font-weight:800; line-height:1.15; margin-bottom:18px; }
-.hero h1 .grad { color:#5B9BFF; }
-.hero p { color:#9AA4B5; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
-.hero .note-box { border:1px solid rgba(125,170,255,0.18); background:rgba(125,170,255,0.04); border-radius:14px; padding:18px 24px; color:#9AA4B5; font-size:14px; line-height:1.6; }
-.hero .note-box b { color:#F4F6FA; }
-.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:32px 36px; }
-.exo-kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.hero h1 .grad { color:#C4785A; }
+.hero p { color:#7A6754; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
+.hero .note-box { border:1px solid rgba(61,43,31,0.14); background:rgba(196,120,90,0.05); border-radius:14px; padding:18px 24px; color:#7A6754; font-size:14px; line-height:1.6; }
+.hero .note-box b { color:#3D2B1F; }
+.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:32px 36px; }
+.exo-kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
 .exo-question { font-size:21px; font-weight:800; margin-bottom:22px; line-height:1.4; }
-.exo-question .hl { color:#7DB8FF; font-weight:700; }
-.exo-divider { border-top:1px solid rgba(125,170,255,0.14); margin-bottom:22px; }
-.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#34D399; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
-.exo-answer { border:1px solid rgba(52,211,153,0.3); background:rgba(52,211,153,0.06); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#F4F6FA; margin-bottom:14px; cursor:pointer; position:relative; }
+.exo-question .hl { color:#C4785A; font-weight:700; }
+.exo-divider { border-top:1px solid rgba(61,43,31,0.12); margin-bottom:22px; }
+.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#6FA378; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.exo-answer { border:1px solid rgba(111,163,120,0.35); background:rgba(111,163,120,0.10); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#3D2B1F; margin-bottom:14px; cursor:pointer; position:relative; }
 .exo-answer.hidden-answer { color:transparent; user-select:none; }
-.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#5C6678; font-size:13px; font-weight:500; }
-.exo-tip { font-size:13px; color:#7A8499; font-style:italic; }
-.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:40px 32px; text-align:center; }
+.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#7A6754; font-size:13px; font-weight:500; }
+.exo-tip { font-size:13px; color:#7A6754; font-style:italic; }
+.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:40px 32px; text-align:center; }
+
+.intro-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:rgba(196,120,90,0.05);
+  border-radius:14px; padding:20px 26px;
+  color:#7A6754; font-size:14px; line-height:1.6;
+}
+.quiz-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.quiz-box h3 { font-size:16px; margin-bottom:4px; color:#3D2B1F; }
+.quiz-box p.quiz-instr { font-size:13px; color:#7A6754; margin-bottom:22px; }
+.quiz-q { margin-bottom:26px; }
+.quiz-q:last-child { margin-bottom:0; }
+.q-num { color:#B8873F; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+.q-text { font-size:16px; font-weight:700; color:#3D2B1F; margin-bottom:14px; }
+.q-options { display:flex; flex-direction:column; gap:10px; }
+.q-opt {
+  border:1px solid rgba(61,43,31,0.18); background:#FBF6EE;
+  border-radius:10px; padding:12px 16px; font-size:14px; color:#3D2B1F;
+  cursor:pointer; transition:background 0.15s, border-color 0.15s;
+}
+.q-opt:hover { background:rgba(196,120,90,0.08); }
+.q-opt.disabled { cursor:not-allowed; pointer-events:none; }
+.q-opt.correct { background:rgba(111,163,120,0.18); border-color:#6FA378; font-weight:700; }
+.q-opt.incorrect { background:rgba(179,86,74,0.14); border-color:#B3564A; }
+.q-feedback { margin-top:10px; font-size:13px; font-weight:600; }
+.q-feedback.correct { color:#6FA378; }
+.q-feedback.incorrect { color:#B3564A; }
+.dialogue-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.dialogue-box h3 { font-size:16px; margin-bottom:18px; color:#3D2B1F; }
+.dialogue-line { display:flex; gap:14px; margin-bottom:16px; align-items:flex-start; }
+.dialogue-tag {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#3D2B1F;
+}
+.dialogue-arabic { font-size:17px; margin-bottom:2px; direction:rtl; }
+.dialogue-latin { font-size:13px; color:#C4785A; font-weight:600; }
+.dialogue-fr { font-size:12px; color:#7A6754; font-style:italic; }
+.exo-box {
+  max-width:760px; margin:0 auto 22px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:26px 32px;
+}
+.exo-box h3 { font-size:16px; margin-bottom:10px; color:#3D2B1F; }
+.exo-box p.exo-instr { font-size:13px; color:#7A6754; margin-bottom:14px; }
+.prod-name-input {
+  width:100%; background:#FBF6EE; border:1px solid rgba(61,43,31,0.18);
+  border-radius:8px; padding:10px 12px; color:#3D2B1F; font-size:14px; margin-bottom:12px;
+}
+.btn-send {
+  background:#C4785A; color:#FFFFFF; border:none; border-radius:10px;
+  padding:12px 24px; font-size:14px; font-weight:700; cursor:pointer;
+  margin-top:12px; transition:background 0.15s;
+}
+.btn-send:hover { background:#B36B4E; }
+.btn-send:disabled { background:#B8A99A; cursor:not-allowed; }
+.send-feedback { margin-top:12px; font-size:13px; font-weight:600; }
+.send-feedback.ok { color:#6FA378; }
+.send-feedback.ko { color:#B3564A; }
 </style>
 </head>
 <body>
@@ -43,83 +117,259 @@ body {
     <div class="badge">SEMAINE 3 · MOIS 3 · EXERCICES</div>
     <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
   </div>
+
+  <div class="intro-box">🎬 Nouveau dialogue : Karim se moque gentiment du pantalon d'Akram... jusqu'à ce que la blague se retourne contre lui ! Testez votre compréhension ci-dessous avant de vous entraîner.</div>
+
+  <div class="quiz-box">
+    <h3>Compréhension du dialogue</h3>
+    <p class="quiz-instr">Cliquez sur une réponse. Si elle est fausse, la bonne réponse s'affiche en vert.</p>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 1</div>
+      <div class="q-text">Que fait Karim au début du dialogue ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Il se moque du pantalon d'Akram, en riant</div>
+        <div class="q-opt" data-idx="1">Il complimente Akram sur son style</div>
+        <div class="q-opt" data-idx="2">Il demande à Akram où il a acheté son pantalon</div>
+        <div class="q-opt" data-idx="3">Il se fâche contre Akram</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 2</div>
+      <div class="q-text">Comment Akram réagit-il à la moquerie de Karim ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Il se vexe et part</div>
+        <div class="q-opt" data-idx="1">Il rit et dit qu'il est « super stylé »</div>
+        <div class="q-opt" data-idx="2">Il ignore complètement Karim</div>
+        <div class="q-opt" data-idx="3">Il se met à pleurer</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 3</div>
+      <div class="q-text">Que répond Karim, avec ironie, à Akram ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">« Tu as raison, tu es très élégant »</div>
+        <div class="q-opt" data-idx="1">« Allez, c'est bon... va dire ça à ta femme ! »</div>
+        <div class="q-opt" data-idx="2">« On va acheter un nouveau pantalon ensemble »</div>
+        <div class="q-opt" data-idx="3">« Je plaisantais, désolé »</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 4</div>
+      <div class="q-text">Quelle est la chute (surprise) du dialogue ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Akram avoue avoir volé le pantalon</div>
+        <div class="q-opt" data-idx="1">C'est justement la femme d'Akram qui lui a offert ce pantalon</div>
+        <div class="q-opt" data-idx="2">Karim s'excuse d'avoir été trop dur</div>
+        <div class="q-opt" data-idx="3">Akram décide d'aller changer de pantalon</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+  </div>
+
+  <div class="dialogue-box">
+    <h3>Karim et Akram — Une blague qui se retourne</h3>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">شكون لي عطاك هاد السروال، آ خويا؟! خايب بزاف!</div>
+        <div class="dialogue-latin">Chkoun li 3tak had sroual, a khoya ?! Khayeb bzzaf !</div>
+        <div class="dialogue-fr">Qui t'a donné ce pantalon, mon frère ?! Il est vraiment très moche !</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">A</div>
+      <div>
+        <div class="dialogue-arabic">هه، نتينا ديما كتكدب! أنا زوين بزاف، ما عرفتيش!</div>
+        <div class="dialogue-latin">Hhh, ntina daymen katkdeb ! Ana zwin bzzaf, ma 3reftich !</div>
+        <div class="dialogue-fr">Hahaha, toi tu racontes toujours n'importe quoi ! Moi je suis super stylé, tu ne le savais pas ?</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">ياك صافي، صافي... ڭولها لمراتك!</div>
+        <div class="dialogue-latin">Yak safi, safi... goulha l mratek !</div>
+        <div class="dialogue-fr">Allez, c'est bon... va dire ça à ta femme !</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">A</div>
+      <div>
+        <div class="dialogue-arabic">هادي هي اللي عطاتني السروال، آ صاحبي!</div>
+        <div class="dialogue-latin">Hadi hiya lli 3tatni sroual, a sa7bi !</div>
+        <div class="dialogue-fr">C'est justement elle qui m'a offert ce pantalon, mon pote !</div>
+      </div>
+    </div>
+  </div>
+
   <div class="hero">
     <div class="kicker">DARIJA MAROCAIN — RÉVISION</div>
-    <h1>Comprendre l' <span class="grad">argot et l'humour</span></h1>
-    <p>Place à la pratique. Ces exercices reprennent les expressions familières, les particules courantes et les ressorts de l'humour marocain.</p>
-    <div class="note-box"><b>7 exercices</b> à faire à voix haute. Restez attentif au ton — la même phrase peut être sincère ou ironique selon l'intonation.</div>
+    <h1>Argot et <span class="grad">humour</span></h1>
+    <p>Place à la pratique. Ces exercices reprennent le vocabulaire vu cette semaine : expressions familières, mots et particules courants, agacement, affection, et expressions humoristiques.</p>
+    <div class="note-box"><b>8 exercices</b> à faire à voix haute, comme dans une vraie discussion. Essayez de répondre <b>avant</b> de regarder la correction.</div>
   </div>
 
   <div class="exo-card">
-    <div class="exo-kicker">VOCABULAIRE</div>
-    <div class="exo-question">Quel mot familier désigne une <span class="hl">personne entêtée ou maladroite</span> ?</div>
+    <div class="exo-kicker">EXPRESSIONS FAMILIÈRES</div>
+    <div class="exo-question">Comment dire qu'un vêtement ou une chose est <span class="hl">nul(le) / raté(e)</span>, en argot ?</div>
     <div class="exo-divider"></div>
     <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">hmar</div>
-    <div class="exo-tip">💡 Littéralement « âne » — à utiliser uniquement entre proches, sur un ton léger.</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Zerga.</div>
+    <div class="exo-tip">💡 Terme familier pour qualifier quelque chose de nul ou de mauvaise qualité.</div>
   </div>
 
   <div class="exo-card">
-    <div class="exo-kicker">PARTICULE</div>
-    <div class="exo-question">Quelle particule signifie <span class="hl">« voici / en fait »</span>, utilisée pour insister ?</div>
+    <div class="exo-kicker">EXPRESSIONS FAMILIÈRES</div>
+    <div class="exo-question">Comment qualifier familièrement quelqu'un de <span class="hl">rusé ou malin</span> ?</div>
     <div class="exo-divider"></div>
     <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">rah</div>
-    <div class="exo-tip">💡 Très fréquente à l'oral pour appuyer une affirmation.</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Dib.</div>
+    <div class="exo-tip">💡 Littéralement « loup » — pas toujours un compliment !</div>
   </div>
 
   <div class="exo-card">
-    <div class="exo-kicker">VOCABULAIRE</div>
-    <div class="exo-question">Comment dit-on <span class="hl">« endroit »</span> ou <span class="hl">« place »</span> de façon familière ?</div>
+    <div class="exo-kicker">PARTICULES COURANTES</div>
+    <div class="exo-question">Quelle particule utilise-t-on pour dire <span class="hl">« bref »</span> ou résumer une idée ?</div>
     <div class="exo-divider"></div>
     <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">blasa</div>
-    <div class="exo-tip">💡 Mot très courant dans le langage quotidien.</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Na3am.</div>
+    <div class="exo-tip">💡 Utile pour résumer ou passer à la suite dans une conversation.</div>
   </div>
 
   <div class="exo-card">
-    <div class="exo-kicker">EXPRESSION</div>
-    <div class="exo-question">Quelle expression signifie <span class="hl">« c'est fini »</span> ou simplement <span class="hl">« voilà »</span> ?</div>
+    <div class="exo-kicker">PARTICULES COURANTES</div>
+    <div class="exo-question">Comment dire <span class="hl">« genre »</span> ou « style », pour illustrer ce qu'on raconte ?</div>
     <div class="exo-divider"></div>
     <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">khlass</div>
-    <div class="exo-tip">💡 Mot très polyvalent, à la fois pour clore un sujet ou marquer une fin.</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Bla3ni.</div>
+    <div class="exo-tip">💡 Mot de remplissage très courant à l'oral, comme « genre » en français.</div>
   </div>
 
   <div class="exo-card">
     <div class="exo-kicker">AGACEMENT</div>
-    <div class="exo-question">Comment dit-on <span class="hl">« ça suffit »</span> de façon familière ?</div>
+    <div class="exo-question">Comment dire <span class="hl">« ça suffit »</span> avec agacement ?</div>
     <div class="exo-divider"></div>
     <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Yezi. / Berk.</div>
-    <div class="exo-tip">💡 Les deux mots peuvent exprimer l'agacement ou demander d'arrêter.</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Safi.</div>
+    <div class="exo-tip">💡 Pour exprimer l'agacement ou demander d'arrêter quelque chose.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">AFFECTION</div>
+    <div class="exo-question">Quel mot affectueux utilise-t-on pour dire <span class="hl">« chéri(e) »</span> entre proches ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Ghalek.</div>
+    <div class="exo-tip">💡 Littéralement « cher à toi », terme tendre utilisé en famille.</div>
   </div>
 
   <div class="exo-card">
     <div class="exo-kicker">HUMOUR</div>
-    <div class="exo-question">Quelle exclamation marque <span class="hl">la surprise ou l'incrédulité</span>, souvent utilisée dans les histoires drôles ?</div>
+    <div class="exo-question">Quelle expression religieuse utilise-t-on avec humour face à une situation absurde ?</div>
     <div class="exo-divider"></div>
     <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Wlaw ?!</div>
-    <div class="exo-tip">💡 Équivalent de « vraiment ?! » ou « sans blague ! ».</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Allah y ster.</div>
+    <div class="exo-tip">💡 Littéralement « que Dieu nous préserve », souvent dit avec le sourire.</div>
   </div>
 
   <div class="exo-card">
-    <div class="exo-kicker">PHRASE LIBRE</div>
-    <div class="exo-question">À voix haute, racontez une petite anecdote drôle en utilisant au moins 2 expressions de la semaine.</div>
+    <div class="exo-kicker">HUMOUR</div>
+    <div class="exo-question">Comment dire de quelqu'un qu'il est <span class="hl">très drôle et sympathique</span>, avec l'image du sang ?</div>
     <div class="exo-divider"></div>
     <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Exemple : « Rah, koulchi mezyan ! Wlaw ?! Khlass, safi. »</div>
-    <div class="exo-tip">💡 L'humour marocain joue beaucoup sur le ton — exagérez un peu pour vous entraîner.</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">3andou dem khfif.</div>
+    <div class="exo-tip">💡 Littéralement « il a le sang léger ». L'inverse : « 3andou dem tqil » (pénible).</div>
+  </div>
+
+  <div class="exo-box">
+    <h3>Production libre</h3>
+    <p class="exo-instr">Racontez, en darija, une petite anecdote drôle ou une blague entre amis (vraie ou inventée). Utilisez au moins deux mots ou expressions vus cette semaine.</p>
+    <input type="text" id="prod-prenom" class="prod-name-input" placeholder="Votre prénom">
+    <textarea id="prod-textarea" style="width:100%;min-height:140px;background:#FBF6EE;border:1px solid rgba(61,43,31,0.18);border-radius:8px;padding:12px;color:#3D2B1F;font-size:14px;" placeholder="Écrivez votre texte ici..."></textarea>
+    <button class="btn-send" id="prod-send-btn" onclick="sendProduction()">Valider et envoyer</button>
+    <div class="send-feedback" id="prod-send-feedback"></div>
   </div>
 
   <div class="end-card">
-    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #34D399;background:rgba(52,211,153,0.08);display:flex;align-items:center;justify-content:center;font-size:24px;color:#34D399;margin:0 auto 18px;">&#10003;</div>
-    <div style="color:#34D399;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
-    <div style="width:50px;height:3px;background:#E5A44B;margin:0 auto 28px;"></div>
-    <div style="color:#E5A44B;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">الضحك يطول العمر</div>
-    <div style="color:#F4F6FA;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"Le rire prolonge la vie."</div>
-    <div style="color:#5C6678;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
-    <div style="border:1px solid rgba(125,170,255,0.18);background:rgba(125,170,255,0.04);border-radius:14px;padding:18px 24px;color:#9AA4B5;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#F4F6FA;'>toute la Semaine 3 du Mois 3</b> : argot, particules courantes et humour marocain. Refaites ces 7 exercices à voix haute avant de passer à la Semaine 4.</div>
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #6FA378;background:rgba(111,163,120,0.12);display:flex;align-items:center;justify-content:center;font-size:24px;color:#6FA378;margin:0 auto 18px;">&#10003;</div>
+    <div style="color:#6FA378;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
+    <div style="width:50px;height:3px;background:#B8873F;margin:0 auto 28px;"></div>
+    <div style="color:#B8873F;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">الصبر مفتاح الفرج</div>
+    <div style="color:#3D2B1F;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"La patience est la clé du soulagement."</div>
+    <div style="color:#7A6754;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
+    <div style="border:1px solid rgba(61,43,31,0.14);background:rgba(196,120,90,0.05);border-radius:14px;padding:18px 24px;color:#7A6754;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#3D2B1F;'>toute la Semaine 3 du Mois 3</b> : expressions familières, particules courantes, agacement, affection et humour marocain. Refaites ces 8 exercices à voix haute avant de passer à la Semaine 4.</div>
   </div>
+
+  <script>
+  function answerQuiz(el) {
+    const q = el.closest('.quiz-q');
+    if (q.classList.contains('answered')) return;
+    q.classList.add('answered');
+    const correctIdx = q.getAttribute('data-correct');
+    const opts = q.querySelectorAll('.q-opt');
+    const chosenIdx = el.getAttribute('data-idx');
+    const feedback = q.querySelector('.q-feedback');
+    opts.forEach(o => {
+      o.classList.add('disabled');
+      if (o.getAttribute('data-idx') === correctIdx) {
+        o.classList.add('correct');
+      }
+    });
+    if (chosenIdx === correctIdx) {
+      feedback.textContent = '✅ Bonne réponse !';
+      feedback.className = 'q-feedback correct';
+    } else {
+      el.classList.add('incorrect');
+      feedback.textContent = '❌ Pas tout à fait — la bonne réponse est en vert.';
+      feedback.className = 'q-feedback incorrect';
+    }
+  }
+  document.querySelectorAll('.q-opt').forEach(opt => {
+    opt.addEventListener('click', function(){ answerQuiz(this); });
+  });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+  const EMAILJS_PUBLIC_KEY  = "T13h-8mdMY_7gdppx";
+  const EMAILJS_SERVICE_ID  = "service_1js313k";
+  const EMAILJS_TEMPLATE_ID = "template_jplu7il";
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  function sendProduction(){
+    const prenom = document.getElementById('prod-prenom').value.trim();
+    const message = document.getElementById('prod-textarea').value.trim();
+    const feedback = document.getElementById('prod-send-feedback');
+    const btn = document.getElementById('prod-send-btn');
+    if (!prenom || !message) {
+      feedback.textContent = "Merci de remplir votre prénom et votre texte avant d'envoyer.";
+      feedback.className = "send-feedback ko";
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Envoi en cours...";
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      prenom: prenom,
+      message: message,
+      exercice: "Semaine 3 Mois 3 — Production libre",
+      date: new Date().toLocaleDateString('fr-FR')
+    }).then(function(){
+      feedback.textContent = "✅ Envoyé ! Votre professeur a bien reçu votre texte.";
+      feedback.className = "send-feedback ok";
+      btn.textContent = "Envoyé ✓";
+    }, function(error){
+      feedback.textContent = "❌ L'envoi a échoué. Réessayez, ou vérifiez votre connexion.";
+      feedback.className = "send-feedback ko";
+      btn.disabled = false;
+      btn.textContent = "Valider et envoyer";
+    });
+  }
+  </script>
 </body></html>
