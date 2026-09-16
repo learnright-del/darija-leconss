@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>Raconter une histoire — Exercices</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#F5F0E8;
+  background-image:
+    linear-gradient(rgba(196,120,90,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,120,90,0.06) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#3D2B1F;
+  padding: 40px 20px 80px;
+}
+.page-header { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto 36px; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#3D2B1F; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#C4785A,#B36B4E);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#C4785A; font-weight:600; }
+.badge { display:inline-block; border:1px solid rgba(196,120,90,0.35); background:rgba(196,120,90,0.08); color:#C4785A; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
+.hero { max-width:760px; margin:30px auto 36px; }
+.hero .kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.hero h1 { font-size:42px; font-weight:800; line-height:1.15; margin-bottom:18px; }
+.hero h1 .grad { color:#C4785A; }
+.hero p { color:#7A6754; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
+.hero .note-box { border:1px solid rgba(61,43,31,0.14); background:rgba(196,120,90,0.05); border-radius:14px; padding:18px 24px; color:#7A6754; font-size:14px; line-height:1.6; }
+.hero .note-box b { color:#3D2B1F; }
+.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:32px 36px; }
+.exo-kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.exo-question { font-size:21px; font-weight:800; margin-bottom:22px; line-height:1.4; }
+.exo-question .hl { color:#C4785A; font-weight:700; }
+.exo-divider { border-top:1px solid rgba(61,43,31,0.12); margin-bottom:22px; }
+.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#6FA378; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.exo-answer { border:1px solid rgba(111,163,120,0.35); background:rgba(111,163,120,0.10); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#3D2B1F; margin-bottom:14px; cursor:pointer; position:relative; }
+.exo-answer.hidden-answer { color:transparent; user-select:none; }
+.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#7A6754; font-size:13px; font-weight:500; }
+.exo-tip { font-size:13px; color:#7A6754; font-style:italic; }
+.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:40px 32px; text-align:center; }
+.exo-box {
+  max-width:760px; margin:0 auto 22px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:26px 32px;
+}
+.exo-box h3 { font-size:16px; margin-bottom:10px; color:#3D2B1F; }
+.exo-box p.exo-instr { font-size:13px; color:#7A6754; margin-bottom:14px; }
+.prod-name-input {
+  width:100%; background:#FBF6EE; border:1px solid rgba(61,43,31,0.18);
+  border-radius:8px; padding:10px 12px; color:#3D2B1F; font-size:14px; margin-bottom:12px;
+}
+.btn-send {
+  background:#C4785A; color:#FFFFFF; border:none; border-radius:10px;
+  padding:12px 24px; font-size:14px; font-weight:700; cursor:pointer;
+  margin-top:12px; transition:background 0.15s;
+}
+.btn-send:hover { background:#B36B4E; }
+.btn-send:disabled { background:#B8A99A; cursor:not-allowed; }
+.send-feedback { margin-top:12px; font-size:13px; font-weight:600; }
+.send-feedback.ok { color:#6FA378; }
+.send-feedback.ko { color:#B3564A; }
+
+.intro-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:rgba(196,120,90,0.05);
+  border-radius:14px; padding:20px 26px;
+  color:#7A6754; font-size:14px; line-height:1.6;
+}
+.quiz-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.quiz-box h3 { font-size:16px; margin-bottom:4px; color:#3D2B1F; }
+.quiz-box p.quiz-instr { font-size:13px; color:#7A6754; margin-bottom:22px; }
+.quiz-q { margin-bottom:26px; }
+.quiz-q:last-child { margin-bottom:0; }
+.q-num { color:#B8873F; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+.q-text { font-size:16px; font-weight:700; color:#3D2B1F; margin-bottom:14px; }
+.q-options { display:flex; flex-direction:column; gap:10px; }
+.q-opt {
+  border:1px solid rgba(61,43,31,0.18); background:#FBF6EE;
+  border-radius:10px; padding:12px 16px; font-size:14px; color:#3D2B1F;
+  cursor:pointer; transition:background 0.15s, border-color 0.15s;
+}
+.q-opt:hover { background:rgba(196,120,90,0.08); }
+.q-opt.disabled { cursor:not-allowed; pointer-events:none; }
+.q-opt.correct { background:rgba(111,163,120,0.18); border-color:#6FA378; font-weight:700; }
+.q-opt.incorrect { background:rgba(179,86,74,0.14); border-color:#B3564A; }
+.q-feedback { margin-top:10px; font-size:13px; font-weight:600; }
+.q-feedback.correct { color:#6FA378; }
+.q-feedback.incorrect { color:#B3564A; }
+.dialogue-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.dialogue-box h3 { font-size:16px; margin-bottom:18px; color:#3D2B1F; }
+.dialogue-line { display:flex; gap:14px; margin-bottom:16px; align-items:flex-start; }
+.dialogue-tag {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#3D2B1F;
+}
+.dialogue-arabic { font-size:17px; margin-bottom:2px; direction:rtl; }
+.dialogue-latin { font-size:13px; color:#C4785A; font-weight:600; }
+.dialogue-fr { font-size:12px; color:#7A6754; font-style:italic; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div class="badge">SEMAINE 4 · MOIS 3 · EXERCICES</div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+  <div class="intro-box">🎬 Nouveau dialogue : Karim et sa sœur repensent à une bêtise d'enfance chez leurs grands-parents. Testez votre compréhension ci-dessous avant de vous entraîner.</div>
+
+  <div class="quiz-box">
+    <h3>Compréhension du dialogue</h3>
+    <p class="quiz-instr">Cliquez sur une réponse. Si elle est fausse, la bonne réponse s'affiche en vert.</p>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 1</div>
+      <div class="q-text">De quoi parlent Karim et sa sœur ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">D'un souvenir d'enfance, une partie de cache-cache</div>
+        <div class="q-opt" data-idx="1">D'un film qu'ils viennent de voir</div>
+        <div class="q-opt" data-idx="2">D'un voyage à venir</div>
+        <div class="q-opt" data-idx="3">D'une dispute récente</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 2</div>
+      <div class="q-text">Où jouaient-ils à cache-cache ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Dans le jardin de leurs grands-parents</div>
+        <div class="q-opt" data-idx="1">Dans leur chambre</div>
+        <div class="q-opt" data-idx="2">À l'école</div>
+        <div class="q-opt" data-idx="3">Au parc du quartier</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 3</div>
+      <div class="q-text">Pourquoi a-t-il fallu 2 heures pour retrouver la sœur ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Elle s'était cachée dans la maison</div>
+        <div class="q-opt" data-idx="1">Les herbes du jardin étaient très hautes</div>
+        <div class="q-opt" data-idx="2">Elle était partie chez une voisine</div>
+        <div class="q-opt" data-idx="3">Elle s'était endormie</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 4</div>
+      <div class="q-text">Comment la sœur réagit-elle en repensant à leur mère ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Elle dit que leur mère était furieuse</div>
+        <div class="q-opt" data-idx="1">Elle rit en disant que leur mère n'arrêtait pas de la chercher</div>
+        <div class="q-opt" data-idx="2">Elle dit que leur mère ne s'est pas inquiétée</div>
+        <div class="q-opt" data-idx="3">Elle ne se souvient pas de leur mère</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+  </div>
+
+  <div class="dialogue-box">
+    <h3>Karim et sa sœur — Un souvenir d'enfance</h3>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">واش كتفكري ملي كنا صغار، وكنلعبو الغميمة في جنان ديال جدي وحنا؟</div>
+        <div class="dialogue-latin">Wach katfekri melli konna sghar, w kanl3bou lghmima f jnan dyal jeddi w hèna ?</div>
+        <div class="dialogue-fr">Tu te souviens quand on était petits, et qu'on jouait à cache-cache dans le jardin de grand-père et grand-mère ?</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">S</div>
+      <div>
+        <div class="dialogue-arabic">واه، كنفكر.</div>
+        <div class="dialogue-latin">Wah, kanfekkar.</div>
+        <div class="dialogue-fr">Oui, je m'en souviens.</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">لعشاب كانو طوال بزاف، حتى لقيناك بجوج سوايح من بعد!</div>
+        <div class="dialogue-latin">L3achab kanou twal bezzaf, hta lqinak b jouj swayeh men b3d !</div>
+        <div class="dialogue-fr">Les herbes étaient tellement hautes qu'on t'a retrouvée 2h plus tard !</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">S</div>
+      <div>
+        <div class="dialogue-arabic">هههه، ماما مسكينة، ما بقاتش غير تقلب عليا!</div>
+        <div class="dialogue-latin">Hhh, mama miskina, ma bqatch ghir tqelleb 3liya !</div>
+        <div class="dialogue-fr">Hahah, maman la pauvre, elle n'arrêtait pas de me chercher !</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">DARIJA MAROCAIN — RÉVISION</div>
+    <h1>Raconter une <span class="grad">histoire</span></h1>
+    <p>Place à la pratique. Ces exercices reprennent les connecteurs logiques, les nuances temporelles et la construction d'un récit.</p>
+    <div class="note-box"><b>7 exercices</b> à faire à voix haute. L'objectif final : être capable de raconter un souvenir avec fluidité en darija.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">CONNECTEUR</div>
+    <div class="exo-question">Quel connecteur signifie <span class="hl">« donc / alors »</span> dans un récit ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">imala</div>
+    <div class="exo-tip">💡 Très utilisé pour enchaîner les idées.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">CONNECTEUR</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« après / puis »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">b3d</div>
+    <div class="exo-tip">💡 Pour indiquer la suite chronologique des événements.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">TEMPS</div>
+    <div class="exo-question">Quel mot signifie <span class="hl">« jadis / autrefois »</span>, pour ouvrir un récit ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">zman</div>
+    <div class="exo-tip">💡 Équivalent de « il était une fois ».</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">VOCABULAIRE</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« études »</span> dans un souvenir scolaire ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">dirasa</div>
+    <div class="exo-tip">💡 Pour situer un souvenir lié à la période scolaire.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">TRADUCTION</div>
+    <div class="exo-question">Traduisez : <span class="hl">« Je suis le cousin de Karim, je vais à la maison de mon oncle. »</span></div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Ana wlid 3ammi Karim, kanmchi l dar dyal khali.</div>
+    <div class="exo-tip">💡 « Wlid 3ammi » (fils de l'oncle) veut dire « cousin » ; « khali » désigne l'oncle maternel.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">PRÉSENTATION</div>
+    <div class="exo-question">Comment présenter un personnage de récit : <span class="hl">« Je suis Sara, lui c'est mon frère Mohammed »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Ana Sara, huwa khoya Mohammed.</div>
+    <div class="exo-tip">💡 Structure simple pour présenter les personnages d'une histoire.</div>
+  </div>
+
+  <div class="exo-box">
+    <h3>Production libre</h3>
+    <p class="exo-instr">Racontez, en darija, un souvenir d'enfance en un petit récit (5-6 phrases). Utilisez au moins deux connecteurs vus cette semaine (imala, b3d, mn qbel, zman...).</p>
+    <input type="text" id="prod-prenom" class="prod-name-input" placeholder="Votre prénom">
+    <textarea id="prod-textarea" style="width:100%;min-height:140px;background:#FBF6EE;border:1px solid rgba(61,43,31,0.18);border-radius:8px;padding:12px;color:#3D2B1F;font-size:14px;" placeholder="Écrivez votre texte ici..."></textarea>
+    <button class="btn-send" id="prod-send-btn" onclick="sendProduction()">Valider et envoyer</button>
+    <div class="send-feedback" id="prod-send-feedback"></div>
+  </div>
+
+  <div class="end-card">
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #6FA378;background:rgba(111,163,120,0.12);display:flex;align-items:center;justify-content:center;font-size:24px;color:#6FA378;margin:0 auto 18px;">&#10003;</div>
+    <div style="color:#6FA378;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
+    <div style="width:50px;height:3px;background:#B8873F;margin:0 auto 28px;"></div>
+    <div style="color:#B8873F;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">زمان كان زمان</div>
+    <div style="color:#3D2B1F;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"Il était une fois (litt. « le temps était le temps »)."</div>
+    <div style="color:#7A6754;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
+    <div style="border:1px solid rgba(61,43,31,0.14);background:rgba(196,120,90,0.05);border-radius:14px;padding:18px 24px;color:#7A6754;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#3D2B1F;'>tout le Mois 3</b> : émotions, opinions, argot/humour, et storytelling. Bravo pour ce travail — direction le Mois 4 !</div>
+  </div>
+
+  <script>
+  function answerQuiz(el) {
+    const q = el.closest('.quiz-q');
+    if (q.classList.contains('answered')) return;
+    q.classList.add('answered');
+    const correctIdx = q.getAttribute('data-correct');
+    const opts = q.querySelectorAll('.q-opt');
+    const chosenIdx = el.getAttribute('data-idx');
+    const feedback = q.querySelector('.q-feedback');
+    opts.forEach(o => {
+      o.classList.add('disabled');
+      if (o.getAttribute('data-idx') === correctIdx) {
+        o.classList.add('correct');
+      }
+    });
+    if (chosenIdx === correctIdx) {
+      feedback.textContent = '✅ Bonne réponse !';
+      feedback.className = 'q-feedback correct';
+    } else {
+      el.classList.add('incorrect');
+      feedback.textContent = '❌ Pas tout à fait — la bonne réponse est en vert.';
+      feedback.className = 'q-feedback incorrect';
+    }
+  }
+  document.querySelectorAll('.q-opt').forEach(opt => {
+    opt.addEventListener('click', function(){ answerQuiz(this); });
+  });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+  const EMAILJS_PUBLIC_KEY  = "T13h-8mdMY_7gdppx";
+  const EMAILJS_SERVICE_ID  = "service_1js313k";
+  const EMAILJS_TEMPLATE_ID = "template_jplu7il";
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  function sendProduction(){
+    const prenom = document.getElementById('prod-prenom').value.trim();
+    const message = document.getElementById('prod-textarea').value.trim();
+    const feedback = document.getElementById('prod-send-feedback');
+    const btn = document.getElementById('prod-send-btn');
+    if (!prenom || !message) {
+      feedback.textContent = "Merci de remplir votre prénom et votre texte avant d'envoyer.";
+      feedback.className = "send-feedback ko";
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Envoi en cours...";
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      prenom: prenom,
+      message: message,
+      exercice: "Semaine 4 Mois 3 — Production libre",
+      date: new Date().toLocaleDateString('fr-FR')
+    }).then(function(){
+      feedback.textContent = "✅ Envoyé ! Votre professeur a bien reçu votre texte.";
+      feedback.className = "send-feedback ok";
+      btn.textContent = "Envoyé ✓";
+    }, function(error){
+      feedback.textContent = "❌ L'envoi a échoué. Réessayez, ou vérifiez votre connexion.";
+      feedback.className = "send-feedback ko";
+      btn.disabled = false;
+      btn.textContent = "Valider et envoyer";
+    });
+  }
+  </script>
+</body></html>
