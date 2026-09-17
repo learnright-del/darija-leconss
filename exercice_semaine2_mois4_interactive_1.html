@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<title>L'actualité et la société — Exercices</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:#F5F0E8;
+  background-image:
+    linear-gradient(rgba(196,120,90,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,120,90,0.06) 1px, transparent 1px);
+  background-size: 38px 38px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color:#3D2B1F;
+  padding: 40px 20px 80px;
+}
+.page-header { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto 36px; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#3D2B1F; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#C4785A,#B36B4E);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#C4785A; font-weight:600; }
+.badge { display:inline-block; border:1px solid rgba(196,120,90,0.35); background:rgba(196,120,90,0.08); color:#C4785A; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
+.hero { max-width:760px; margin:30px auto 36px; }
+.hero .kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.hero h1 { font-size:42px; font-weight:800; line-height:1.15; margin-bottom:18px; }
+.hero h1 .grad { color:#C4785A; }
+.hero p { color:#7A6754; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
+.hero .note-box { border:1px solid rgba(61,43,31,0.14); background:rgba(196,120,90,0.05); border-radius:14px; padding:18px 24px; color:#7A6754; font-size:14px; line-height:1.6; }
+.hero .note-box b { color:#3D2B1F; }
+.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:32px 36px; }
+.exo-kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.exo-question { font-size:21px; font-weight:800; margin-bottom:22px; line-height:1.4; }
+.exo-question .hl { color:#C4785A; font-weight:700; }
+.exo-divider { border-top:1px solid rgba(61,43,31,0.12); margin-bottom:22px; }
+.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#6FA378; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.exo-answer { border:1px solid rgba(111,163,120,0.35); background:rgba(111,163,120,0.10); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#3D2B1F; margin-bottom:14px; cursor:pointer; position:relative; }
+.exo-answer.hidden-answer { color:transparent; user-select:none; }
+.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#7A6754; font-size:13px; font-weight:500; }
+.exo-tip { font-size:13px; color:#7A6754; font-style:italic; }
+.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:40px 32px; text-align:center; }
+.exo-box {
+  max-width:760px; margin:0 auto 22px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:26px 32px;
+}
+.exo-box h3 { font-size:16px; margin-bottom:10px; color:#3D2B1F; }
+.exo-box p.exo-instr { font-size:13px; color:#7A6754; margin-bottom:14px; }
+.prod-name-input {
+  width:100%; background:#FBF6EE; border:1px solid rgba(61,43,31,0.18);
+  border-radius:8px; padding:10px 12px; color:#3D2B1F; font-size:14px; margin-bottom:12px;
+}
+.btn-send {
+  background:#C4785A; color:#FFFFFF; border:none; border-radius:10px;
+  padding:12px 24px; font-size:14px; font-weight:700; cursor:pointer;
+  margin-top:12px; transition:background 0.15s;
+}
+.btn-send:hover { background:#B36B4E; }
+.btn-send:disabled { background:#B8A99A; cursor:not-allowed; }
+.send-feedback { margin-top:12px; font-size:13px; font-weight:600; }
+.send-feedback.ok { color:#6FA378; }
+.send-feedback.ko { color:#B3564A; }
+
+.intro-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:rgba(196,120,90,0.05);
+  border-radius:14px; padding:20px 26px;
+  color:#7A6754; font-size:14px; line-height:1.6;
+}
+.quiz-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.quiz-box h3 { font-size:16px; margin-bottom:4px; color:#3D2B1F; }
+.quiz-box p.quiz-instr { font-size:13px; color:#7A6754; margin-bottom:22px; }
+.quiz-q { margin-bottom:26px; }
+.quiz-q:last-child { margin-bottom:0; }
+.q-num { color:#B8873F; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+.q-text { font-size:16px; font-weight:700; color:#3D2B1F; margin-bottom:14px; }
+.q-options { display:flex; flex-direction:column; gap:10px; }
+.q-opt {
+  border:1px solid rgba(61,43,31,0.18); background:#FBF6EE;
+  border-radius:10px; padding:12px 16px; font-size:14px; color:#3D2B1F;
+  cursor:pointer; transition:background 0.15s, border-color 0.15s;
+}
+.q-opt:hover { background:rgba(196,120,90,0.08); }
+.q-opt.disabled { cursor:not-allowed; pointer-events:none; }
+.q-opt.correct { background:rgba(111,163,120,0.18); border-color:#6FA378; font-weight:700; }
+.q-opt.incorrect { background:rgba(179,86,74,0.14); border-color:#B3564A; }
+.q-feedback { margin-top:10px; font-size:13px; font-weight:600; }
+.q-feedback.correct { color:#6FA378; }
+.q-feedback.incorrect { color:#B3564A; }
+.dialogue-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.dialogue-box h3 { font-size:16px; margin-bottom:18px; color:#3D2B1F; }
+.dialogue-line { display:flex; gap:14px; margin-bottom:16px; align-items:flex-start; }
+.dialogue-tag {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#3D2B1F;
+}
+.dialogue-arabic { font-size:17px; margin-bottom:2px; direction:rtl; }
+.dialogue-latin { font-size:13px; color:#C4785A; font-weight:600; }
+.dialogue-fr { font-size:12px; color:#7A6754; font-style:italic; }
+</style>
+</head>
+<body>
+  <div class="page-header">
+    <div class="badge">SEMAINE 2 · MOIS 4 · EXERCICES</div>
+    <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
+  </div>
+  <div class="intro-box">🎬 Nouveau dialogue : Karim discute avec son père en lisant le journal. Testez votre compréhension ci-dessous avant de vous entraîner.</div>
+
+  <div class="quiz-box">
+    <h3>Compréhension du dialogue</h3>
+    <p class="quiz-instr">Cliquez sur une réponse. Si elle est fausse, la bonne réponse s'affiche en vert.</p>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 1</div>
+      <div class="q-text">De la décision de qui Karim ne comprend-il pas le sens ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Du gouvernement</div>
+        <div class="q-opt" data-idx="1">De son école</div>
+        <div class="q-opt" data-idx="2">De son patron</div>
+        <div class="q-opt" data-idx="3">De sa famille</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 2</div>
+      <div class="q-text">Que répond d'abord le père à Karim ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Que ce n'est pas si simple</div>
+        <div class="q-opt" data-idx="1">Qu'il a totalement raison</div>
+        <div class="q-opt" data-idx="2">Qu'il devrait se taire</div>
+        <div class="q-opt" data-idx="3">Qu'il ne sait rien</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="1">
+      <div class="q-num">Question 3</div>
+      <div class="q-text">Sur quel sujet porte le budget que Karim trouve trop faible ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">La santé</div>
+        <div class="q-opt" data-idx="1">L'éducation</div>
+        <div class="q-opt" data-idx="2">Les impôts</div>
+        <div class="q-opt" data-idx="3">L'armée</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 4</div>
+      <div class="q-text">Comment le père réagit-il à la fin de la discussion ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Il dit que ça le dépasse</div>
+        <div class="q-opt" data-idx="1">Il se met en colère</div>
+        <div class="q-opt" data-idx="2">Il propose une solution</div>
+        <div class="q-opt" data-idx="3">Il change de sujet</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+  </div>
+
+  <div class="dialogue-box">
+    <h3>Karim et son père — Une décision du gouvernement</h3>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">ما فهمتش قرار الحكومة.</div>
+        <div class="dialogue-latin">Ma fahemtch qarar lhukouma.</div>
+        <div class="dialogue-fr">Je ne comprends pas la décision du gouvernement.</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">P</div>
+      <div>
+        <div class="dialogue-arabic">ماشي بسيط هكا آ ولدي.</div>
+        <div class="dialogue-latin">Mashi basit hakka a weldi.</div>
+        <div class="dialogue-fr">Ce n'est pas si simple mon fils.</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">واخا، ولكن الميزانية لي تصوتات للتعليم ضعيفة بزاف.</div>
+        <div class="dialogue-latin">Wakha, walakin lmizaniya li tsawtat l ta3lim da3ifa bzzaf.</div>
+        <div class="dialogue-fr">D'accord, mais le budget voté pour l'éducation est vraiment trop faible.</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">P</div>
+      <div>
+        <div class="dialogue-arabic">هادشي فوق فهامي آ ولدي.</div>
+        <div class="dialogue-latin">Hadchi fuq fhami a weldi.</div>
+        <div class="dialogue-fr">Ce sont des choses qui me dépassent mon fils.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">DARIJA MAROCAIN — RÉVISION</div>
+    <h1>L'actualité et la <span class="grad">société</span></h1>
+    <p>Place à la pratique. Ces exercices reprennent la presse, le vocabulaire sociétal, les positions nuancées et les réseaux sociaux.</p>
+    <div class="note-box"><b>7 exercices</b> à faire à voix haute, comme dans un vrai débat ou une discussion d'actualité, plus une production libre à envoyer à votre professeur.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">PRESSE</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« titre »</span> d'un article ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">3inwan</div>
+    <div class="exo-tip">💡 Le mot clé pour comprendre un titre de presse.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">SOCIÉTÉ</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« gouvernement »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">hukouma</div>
+    <div class="exo-tip">💡 Vocabulaire de base pour parler de politique.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">NUANCE</div>
+    <div class="exo-question">Comment introduire un point de vue opposé dans un débat ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">W men jiha khra...</div>
+    <div class="exo-tip">💡 « Et de l'autre côté... » — pour nuancer une analyse.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">NUANCE</div>
+    <div class="exo-question">Comment dire <span class="hl">« je ne suis pas totalement d'accord »</span> ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Walakin ana machi mtafiq qa3.</div>
+    <div class="exo-tip">💡 Pour exprimer un désaccord partiel et nuancé.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">RÉSEAUX SOCIAUX</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« abonné »</span> sur les réseaux sociaux ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">mutabi3</div>
+    <div class="exo-tip">💡 Le vrai terme arabe, utilisé par Instagram/Facebook.</div>
+  </div>
+
+  <div class="exo-card">
+    <div class="exo-kicker">RÉSEAUX SOCIAUX</div>
+    <div class="exo-question">Comment dit-on <span class="hl">« commentaire »</span> sur une publication ?</div>
+    <div class="exo-divider"></div>
+    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">ta3liq</div>
+    <div class="exo-tip">💡 Le vrai mot marocain, pas juste l'emprunt phonétique au français.</div>
+  </div>
+
+  <div class="exo-box">
+    <h3>Production libre</h3>
+    <p class="exo-instr">Donnez, en darija, votre avis nuancé sur un sujet d'actualité en 4-5 phrases. Utilisez au moins une expression de nuance vue cette semaine (walakin, w men jiha khra...).</p>
+    <input type="text" id="prod-prenom" class="prod-name-input" placeholder="Votre prénom">
+    <textarea id="prod-textarea" style="width:100%;min-height:140px;background:#FBF6EE;border:1px solid rgba(61,43,31,0.18);border-radius:8px;padding:12px;color:#3D2B1F;font-size:14px;" placeholder="Écrivez votre texte ici..."></textarea>
+    <button class="btn-send" id="prod-send-btn" onclick="sendProduction()">Valider et envoyer</button>
+    <div class="send-feedback" id="prod-send-feedback"></div>
+  </div>
+
+  <div class="end-card">
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #6FA378;background:rgba(111,163,120,0.12);display:flex;align-items:center;justify-content:center;font-size:24px;color:#6FA378;margin:0 auto 18px;">&#10003;</div>
+    <div style="color:#6FA378;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
+    <div style="width:50px;height:3px;background:#B8873F;margin:0 auto 28px;"></div>
+    <div style="color:#B8873F;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">الحكمة ضالة المؤمن</div>
+    <div style="color:#3D2B1F;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"La sagesse est ce que recherche le croyant."</div>
+    <div style="color:#7A6754;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
+    <div style="border:1px solid rgba(61,43,31,0.14);background:rgba(196,120,90,0.05);border-radius:14px;padding:18px 24px;color:#7A6754;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#3D2B1F;'>toute la Semaine 2 du Mois 4</b> : presse, société, nuances et réseaux sociaux. Refaites ces 7 exercices à voix haute avant de passer à la Semaine 3.</div>
+  </div>
+
+  <script>
+  function answerQuiz(el) {
+    const q = el.closest('.quiz-q');
+    if (q.classList.contains('answered')) return;
+    q.classList.add('answered');
+    const correctIdx = q.getAttribute('data-correct');
+    const opts = q.querySelectorAll('.q-opt');
+    const chosenIdx = el.getAttribute('data-idx');
+    const feedback = q.querySelector('.q-feedback');
+    opts.forEach(o => {
+      o.classList.add('disabled');
+      if (o.getAttribute('data-idx') === correctIdx) {
+        o.classList.add('correct');
+      }
+    });
+    if (chosenIdx === correctIdx) {
+      feedback.textContent = '✅ Bonne réponse !';
+      feedback.className = 'q-feedback correct';
+    } else {
+      el.classList.add('incorrect');
+      feedback.textContent = '❌ Pas tout à fait — la bonne réponse est en vert.';
+      feedback.className = 'q-feedback incorrect';
+    }
+  }
+  document.querySelectorAll('.q-opt').forEach(opt => {
+    opt.addEventListener('click', function(){ answerQuiz(this); });
+  });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+  const EMAILJS_PUBLIC_KEY  = "T13h-8mdMY_7gdppx";
+  const EMAILJS_SERVICE_ID  = "service_1js313k";
+  const EMAILJS_TEMPLATE_ID = "template_jplu7il";
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  function sendProduction(){
+    const prenom = document.getElementById('prod-prenom').value.trim();
+    const message = document.getElementById('prod-textarea').value.trim();
+    const feedback = document.getElementById('prod-send-feedback');
+    const btn = document.getElementById('prod-send-btn');
+    if (!prenom || !message) {
+      feedback.textContent = "Merci de remplir votre prénom et votre texte avant d'envoyer.";
+      feedback.className = "send-feedback ko";
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Envoi en cours...";
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      prenom: prenom,
+      message: message,
+      exercice: "Semaine 2 Mois 4 — Production libre",
+      date: new Date().toLocaleDateString('fr-FR')
+    }).then(function(){
+      feedback.textContent = "✅ Envoyé ! Votre professeur a bien reçu votre texte.";
+      feedback.className = "send-feedback ok";
+      btn.textContent = "Envoyé ✓";
+    }, function(error){
+      feedback.textContent = "❌ L'envoi a échoué. Réessayez, ou vérifiez votre connexion.";
+      feedback.className = "send-feedback ko";
+      btn.disabled = false;
+      btn.textContent = "Valider et envoyer";
+    });
+  }
+  </script>
+</body></html>
