@@ -4,38 +4,112 @@
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
 body {
-  background:#0A0E17;
+  background:#F5F0E8;
   background-image:
-    linear-gradient(rgba(125,170,255,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(125,170,255,0.045) 1px, transparent 1px);
+    linear-gradient(rgba(196,120,90,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196,120,90,0.06) 1px, transparent 1px);
   background-size: 38px 38px;
   font-family: 'Segoe UI', Arial, sans-serif;
-  color:#F4F6FA;
+  color:#3D2B1F;
   padding: 40px 20px 80px;
 }
 .page-header { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto 36px; }
-.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#fff; }
-.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#5B9BFF,#7B6CF0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
-.logo .right { color:#7DB8FF; font-weight:600; }
-.badge { display:inline-block; border:1px solid rgba(125,184,255,0.35); background:rgba(125,184,255,0.06); color:#7DB8FF; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
+.logo { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#3D2B1F; }
+.logo .l-box { width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#C4785A,#B36B4E);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff; }
+.logo .right { color:#C4785A; font-weight:600; }
+.badge { display:inline-block; border:1px solid rgba(196,120,90,0.35); background:rgba(196,120,90,0.08); color:#C4785A; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:5px 12px; border-radius:14px; }
 .hero { max-width:760px; margin:30px auto 36px; }
-.hero .kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+.hero .kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
 .hero h1 { font-size:42px; font-weight:800; line-height:1.15; margin-bottom:18px; }
-.hero h1 .grad { color:#5B9BFF; }
-.hero p { color:#9AA4B5; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
-.hero .note-box { border:1px solid rgba(125,170,255,0.18); background:rgba(125,170,255,0.04); border-radius:14px; padding:18px 24px; color:#9AA4B5; font-size:14px; line-height:1.6; }
-.hero .note-box b { color:#F4F6FA; }
-.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:32px 36px; }
-.exo-kicker { color:#E5A44B; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.hero h1 .grad { color:#C4785A; }
+.hero p { color:#7A6754; font-size:15px; line-height:1.6; max-width:600px; margin-bottom:24px; }
+.hero .note-box { border:1px solid rgba(61,43,31,0.14); background:rgba(196,120,90,0.05); border-radius:14px; padding:18px 24px; color:#7A6754; font-size:14px; line-height:1.6; }
+.hero .note-box b { color:#3D2B1F; }
+.exo-card { max-width:760px; margin:0 auto 22px; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:32px 36px; }
+.exo-kicker { color:#B8873F; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
 .exo-question { font-size:21px; font-weight:800; margin-bottom:22px; line-height:1.4; }
-.exo-question .hl { color:#7DB8FF; font-weight:700; }
-.exo-divider { border-top:1px solid rgba(125,170,255,0.14); margin-bottom:22px; }
-.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#34D399; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
-.exo-answer { border:1px solid rgba(52,211,153,0.3); background:rgba(52,211,153,0.06); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#F4F6FA; margin-bottom:14px; cursor:pointer; position:relative; }
+.exo-question .hl { color:#C4785A; font-weight:700; }
+.exo-divider { border-top:1px solid rgba(61,43,31,0.12); margin-bottom:22px; }
+.exo-reponse-label { display:flex; align-items:center; gap:8px; color:#6FA378; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:12px; }
+.exo-answer { border:1px solid rgba(111,163,120,0.35); background:rgba(111,163,120,0.10); border-radius:12px; padding:18px 22px; font-size:17px; font-weight:600; color:#3D2B1F; margin-bottom:14px; cursor:pointer; position:relative; }
 .exo-answer.hidden-answer { color:transparent; user-select:none; }
-.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#5C6678; font-size:13px; font-weight:500; }
-.exo-tip { font-size:13px; color:#7A8499; font-style:italic; }
-.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(125,170,255,0.18); background:rgba(255,255,255,0.015); border-radius:18px; padding:40px 32px; text-align:center; }
+.exo-answer.hidden-answer::before { content:"\1F441 Cliquez pour révéler la réponse"; position:absolute; left:22px; top:50%; transform:translateY(-50%); color:#7A6754; font-size:13px; font-weight:500; }
+.exo-tip { font-size:13px; color:#7A6754; font-style:italic; }
+.end-card { max-width:760px; margin:0 auto; border:1px solid rgba(61,43,31,0.14); background:#FFFFFF; border-radius:18px; padding:40px 32px; text-align:center; }
+.exo-box {
+  max-width:760px; margin:0 auto 22px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:26px 32px;
+}
+.exo-box h3 { font-size:16px; margin-bottom:10px; color:#3D2B1F; }
+.exo-box p.exo-instr { font-size:13px; color:#7A6754; margin-bottom:14px; }
+.prod-name-input {
+  width:100%; background:#FBF6EE; border:1px solid rgba(61,43,31,0.18);
+  border-radius:8px; padding:10px 12px; color:#3D2B1F; font-size:14px; margin-bottom:12px;
+}
+.btn-send {
+  background:#C4785A; color:#FFFFFF; border:none; border-radius:10px;
+  padding:12px 24px; font-size:14px; font-weight:700; cursor:pointer;
+  margin-top:12px; transition:background 0.15s;
+}
+.btn-send:hover { background:#B36B4E; }
+.btn-send:disabled { background:#B8A99A; cursor:not-allowed; }
+.send-feedback { margin-top:12px; font-size:13px; font-weight:600; }
+.send-feedback.ok { color:#6FA378; }
+.send-feedback.ko { color:#B3564A; }
+
+.intro-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:rgba(196,120,90,0.05);
+  border-radius:14px; padding:20px 26px;
+  color:#7A6754; font-size:14px; line-height:1.6;
+}
+.quiz-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.quiz-box h3 { font-size:16px; margin-bottom:4px; color:#3D2B1F; }
+.quiz-box p.quiz-instr { font-size:13px; color:#7A6754; margin-bottom:22px; }
+.quiz-q { margin-bottom:26px; }
+.quiz-q:last-child { margin-bottom:0; }
+.q-num { color:#B8873F; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+.q-text { font-size:16px; font-weight:700; color:#3D2B1F; margin-bottom:14px; }
+.q-options { display:flex; flex-direction:column; gap:10px; }
+.q-opt {
+  border:1px solid rgba(61,43,31,0.18); background:#FBF6EE;
+  border-radius:10px; padding:12px 16px; font-size:14px; color:#3D2B1F;
+  cursor:pointer; transition:background 0.15s, border-color 0.15s;
+}
+.q-opt:hover { background:rgba(196,120,90,0.08); }
+.q-opt.disabled { cursor:not-allowed; pointer-events:none; }
+.q-opt.correct { background:rgba(111,163,120,0.18); border-color:#6FA378; font-weight:700; }
+.q-opt.incorrect { background:rgba(179,86,74,0.14); border-color:#B3564A; }
+.q-feedback { margin-top:10px; font-size:13px; font-weight:600; }
+.q-feedback.correct { color:#6FA378; }
+.q-feedback.incorrect { color:#B3564A; }
+.dialogue-box {
+  max-width:760px; margin:0 auto 30px;
+  border:1px solid rgba(61,43,31,0.14);
+  background:#FFFFFF;
+  border-radius:18px;
+  padding:28px 32px;
+}
+.dialogue-box h3 { font-size:16px; margin-bottom:18px; color:#3D2B1F; }
+.dialogue-line { display:flex; gap:14px; margin-bottom:16px; align-items:flex-start; }
+.dialogue-tag {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#3D2B1F;
+}
+.dialogue-arabic { font-size:17px; margin-bottom:2px; direction:rtl; }
+.dialogue-latin { font-size:13px; color:#C4785A; font-weight:600; }
+.dialogue-fr { font-size:12px; color:#7A6754; font-style:italic; }
 </style>
 </head>
 <body>
@@ -43,11 +117,118 @@ body {
     <div class="badge">SEMAINE 3 · MOIS 4 · EXERCICES</div>
     <div class="logo"><div class="l-box">L</div>LEARN<span class="right">RIGHT</span></div>
   </div>
+  <div class="intro-box">🎬 Nouveau dialogue : Karim rencontre quelqu'un de nouveau et découvre une différence de vocabulaire régional. Testez votre compréhension ci-dessous avant de vous entraîner.</div>
+
+  <div class="quiz-box">
+    <h3>Compréhension du dialogue</h3>
+    <p class="quiz-instr">Cliquez sur une réponse. Si elle est fausse, la bonne réponse s'affiche en vert.</p>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 1</div>
+      <div class="q-text">D'où vient la personne que Karim rencontre ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">De Casablanca</div>
+        <div class="q-opt" data-idx="1">De Fès</div>
+        <div class="q-opt" data-idx="2">De Rabat</div>
+        <div class="q-opt" data-idx="3">De Marrakech</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 2</div>
+      <div class="q-text">Quel mot utilise-t-elle pour demander « où » se trouve le marché ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Win</div>
+        <div class="q-opt" data-idx="1">Fin</div>
+        <div class="q-opt" data-idx="2">Fuqach</div>
+        <div class="q-opt" data-idx="3">Chkoun</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 3</div>
+      <div class="q-text">Que veut dire « win » à Casablanca ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">« Fin » (où)</div>
+        <div class="q-opt" data-idx="1">« Comment »</div>
+        <div class="q-opt" data-idx="2">« Pourquoi »</div>
+        <div class="q-opt" data-idx="3">« Quand »</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+
+    <div class="quiz-q" data-correct="0">
+      <div class="q-num">Question 4</div>
+      <div class="q-text">Comment se termine la conversation ?</div>
+      <div class="q-options">
+        <div class="q-opt" data-idx="0">Ils réalisent qu'ils vont finir par se comprendre malgré leurs différences</div>
+        <div class="q-opt" data-idx="1">Ils se disputent sur le bon mot à utiliser</div>
+        <div class="q-opt" data-idx="2">Ils changent complètement de sujet</div>
+        <div class="q-opt" data-idx="3">Ils ne se comprennent toujours pas du tout</div>
+      </div>
+      <div class="q-feedback"></div>
+    </div>
+  </div>
+
+  <div class="dialogue-box">
+    <h3>Karim et un nouveau venu — Une différence de dialecte</h3>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">السلام، نتا جديد هنا؟</div>
+        <div class="dialogue-latin">Salam, nta jdid hna ?</div>
+        <div class="dialogue-fr">Salam, tu es nouveau ici ?</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">N</div>
+      <div>
+        <div class="dialogue-arabic">آه، جاي من كازا. وين كاين السوق هنا؟</div>
+        <div class="dialogue-latin">Ah, jay men Casa. Win kayn souq hna ?</div>
+        <div class="dialogue-fr">Oui, je viens de Casa. Où est le marché ici ?</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">وين؟ ما فهمتش.</div>
+        <div class="dialogue-latin">Win ? Ma fahemtch.</div>
+        <div class="dialogue-fr">Win ? Je n'ai pas compris.</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">N</div>
+      <div>
+        <div class="dialogue-arabic">وين، عندنا في كازا كايعني فين.</div>
+        <div class="dialogue-latin">Win, 3ndna f Casa ka-y3ni Fin.</div>
+        <div class="dialogue-fr">Win, chez nous à Casa ça veut dire Fin.</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#C4785A;">K</div>
+      <div>
+        <div class="dialogue-arabic">آه، في وجدة كنقولو فين!</div>
+        <div class="dialogue-latin">Ah, f Oujda kanqolou Fin !</div>
+        <div class="dialogue-fr">Ah, à Oujda on dit Fin !</div>
+      </div>
+    </div>
+    <div class="dialogue-line">
+      <div class="dialogue-tag" style="background:#B8873F;">N</div>
+      <div>
+        <div class="dialogue-arabic">وا راه! صافي، غادي نفهمو بعضنا فالأخير.</div>
+        <div class="dialogue-latin">Wa rah ! Safi, ghadi nfahmou ba3dna fakhir.</div>
+        <div class="dialogue-fr">Voilà ! Bon, on va finir par se comprendre.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="hero">
     <div class="kicker">DARIJA MAROCAIN — RÉVISION</div>
     <h1>Les dialectes <span class="grad">régionaux</span></h1>
     <p>Place à la pratique. Ces exercices reprennent les particularités régionales, les mots amazigh, l'adaptation au contexte et les expressions incontournables.</p>
-    <div class="note-box"><b>7 exercices</b> à faire à voix haute. L'objectif : reconnaître et utiliser les variantes régionales du darija marocain.</div>
+    <div class="note-box"><b>7 exercices</b> à faire à voix haute. L'objectif : reconnaître et utiliser les variantes régionales du darija marocain, plus une production libre à envoyer à votre professeur.</div>
   </div>
 
   <div class="exo-card">
@@ -55,7 +236,7 @@ body {
     <div class="exo-question">Quel mot signifie <span class="hl">« maintenant »</span> à l'Est du Maroc (Oujda/Berkane) ?</div>
     <div class="exo-divider"></div>
     <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">derk</div>
+    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">der9ouk</div>
     <div class="exo-tip">💡 Ailleurs au Maroc, on dit plutôt « daba ».</div>
   </div>
 
@@ -104,22 +285,88 @@ body {
     <div class="exo-tip">💡 Expression de confirmation appuyée, très orale.</div>
   </div>
 
-  <div class="exo-card">
-    <div class="exo-kicker">PHRASE LIBRE</div>
-    <div class="exo-question">À voix haute, présentez une particularité régionale que vous avez apprise cette semaine.</div>
-    <div class="exo-divider"></div>
-    <div class="exo-reponse-label">&#10003; RÉPONSE</div>
-    <div class="exo-answer hidden-answer" onclick="this.classList.remove('hidden-answer')">Exemple : « F l-charq dyal lmaghrib, kanqolou derk, machi daba. »</div>
-    <div class="exo-tip">💡 Improvisez en comparant deux variantes régionales.</div>
+  <div class="exo-box">
+    <h3>Production libre</h3>
+    <p class="exo-instr">Présentez, en darija, une particularité régionale que vous avez apprise cette semaine en 3-4 phrases (un mot local, une expression, une différence entre deux régions).</p>
+    <input type="text" id="prod-prenom" class="prod-name-input" placeholder="Votre prénom">
+    <textarea id="prod-textarea" style="width:100%;min-height:140px;background:#FBF6EE;border:1px solid rgba(61,43,31,0.18);border-radius:8px;padding:12px;color:#3D2B1F;font-size:14px;" placeholder="Écrivez votre texte ici..."></textarea>
+    <button class="btn-send" id="prod-send-btn" onclick="sendProduction()">Valider et envoyer</button>
+    <div class="send-feedback" id="prod-send-feedback"></div>
   </div>
 
   <div class="end-card">
-    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #34D399;background:rgba(52,211,153,0.08);display:flex;align-items:center;justify-content:center;font-size:24px;color:#34D399;margin:0 auto 18px;">&#10003;</div>
-    <div style="color:#34D399;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
-    <div style="width:50px;height:3px;background:#E5A44B;margin:0 auto 28px;"></div>
-    <div style="color:#E5A44B;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">كل بلاد وعادتها</div>
-    <div style="color:#F4F6FA;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"Chaque région a ses coutumes."</div>
-    <div style="color:#5C6678;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
-    <div style="border:1px solid rgba(125,170,255,0.18);background:rgba(125,170,255,0.04);border-radius:14px;padding:18px 24px;color:#9AA4B5;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#F4F6FA;'>toute la Semaine 3 du Mois 4</b> : particularités régionales, amazigh, adaptation et expressions incontournables. Refaites ces 7 exercices à voix haute avant de passer à la Semaine 4, le bilan final !</div>
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid #6FA378;background:rgba(111,163,120,0.12);display:flex;align-items:center;justify-content:center;font-size:24px;color:#6FA378;margin:0 auto 18px;">&#10003;</div>
+    <div style="color:#6FA378;font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;">BRAVO — SEMAINE COMPLÈTE</div>
+    <div style="width:50px;height:3px;background:#B8873F;margin:0 auto 28px;"></div>
+    <div style="color:#B8873F;font-size:24px;font-weight:600;margin-bottom:16px;direction:rtl;">كل بلاد وعادتها</div>
+    <div style="color:#3D2B1F;font-style:italic;font-size:16px;line-height:1.5;margin-bottom:8px;max-width:560px;margin-left:auto;margin-right:auto;">"Chaque région a ses coutumes."</div>
+    <div style="color:#7A6754;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:26px;">PROVERBE MAROCAIN</div>
+    <div style="border:1px solid rgba(61,43,31,0.14);background:rgba(196,120,90,0.05);border-radius:14px;padding:18px 24px;color:#7A6754;font-size:14px;line-height:1.6;max-width:600px;margin:0 auto;">Vous avez terminé <b style='color:#3D2B1F;'>toute la Semaine 3 du Mois 4</b> : particularités régionales, amazigh, adaptation et expressions incontournables. Refaites ces 7 exercices à voix haute avant de passer à la Semaine 4, le bilan final !</div>
   </div>
+
+  <script>
+  function answerQuiz(el) {
+    const q = el.closest('.quiz-q');
+    if (q.classList.contains('answered')) return;
+    q.classList.add('answered');
+    const correctIdx = q.getAttribute('data-correct');
+    const opts = q.querySelectorAll('.q-opt');
+    const chosenIdx = el.getAttribute('data-idx');
+    const feedback = q.querySelector('.q-feedback');
+    opts.forEach(o => {
+      o.classList.add('disabled');
+      if (o.getAttribute('data-idx') === correctIdx) {
+        o.classList.add('correct');
+      }
+    });
+    if (chosenIdx === correctIdx) {
+      feedback.textContent = '✅ Bonne réponse !';
+      feedback.className = 'q-feedback correct';
+    } else {
+      el.classList.add('incorrect');
+      feedback.textContent = '❌ Pas tout à fait — la bonne réponse est en vert.';
+      feedback.className = 'q-feedback incorrect';
+    }
+  }
+  document.querySelectorAll('.q-opt').forEach(opt => {
+    opt.addEventListener('click', function(){ answerQuiz(this); });
+  });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+  const EMAILJS_PUBLIC_KEY  = "T13h-8mdMY_7gdppx";
+  const EMAILJS_SERVICE_ID  = "service_1js313k";
+  const EMAILJS_TEMPLATE_ID = "template_jplu7il";
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  function sendProduction(){
+    const prenom = document.getElementById('prod-prenom').value.trim();
+    const message = document.getElementById('prod-textarea').value.trim();
+    const feedback = document.getElementById('prod-send-feedback');
+    const btn = document.getElementById('prod-send-btn');
+    if (!prenom || !message) {
+      feedback.textContent = "Merci de remplir votre prénom et votre texte avant d'envoyer.";
+      feedback.className = "send-feedback ko";
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Envoi en cours...";
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      prenom: prenom,
+      message: message,
+      exercice: "Semaine 3 Mois 4 — Production libre",
+      date: new Date().toLocaleDateString('fr-FR')
+    }).then(function(){
+      feedback.textContent = "✅ Envoyé ! Votre professeur a bien reçu votre texte.";
+      feedback.className = "send-feedback ok";
+      btn.textContent = "Envoyé ✓";
+    }, function(error){
+      feedback.textContent = "❌ L'envoi a échoué. Réessayez, ou vérifiez votre connexion.";
+      feedback.className = "send-feedback ko";
+      btn.disabled = false;
+      btn.textContent = "Valider et envoyer";
+    });
+  }
+  </script>
 </body></html>
